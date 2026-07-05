@@ -1,0 +1,126 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/chart.min.js' %}"></script>
+
+<div class="container" style="max-width: 1200px; margin: auto; padding: 20px;">
+
+    <div class="student-card" style="background:white; padding:20px; border-radius:12px; text-align:center;">
+        <h2>مخطط التقدم الأكاديمي لجميع الاترام</h2>
+        <h3> للطالب  : {{ student.person.name.arabic_full_name }}</h3>
+    </div>
+
+    <div style="margin-top:20px; text-align:center; font-size:18px;">
+        <strong>المعدل:</strong> <span id="average"></span><br>
+        <strong>التقدير:</strong> <span id="grade"></span>
+    </div>
+
+    <div class="chart-container" style="width:70%; margin:auto;">
+        <canvas id="all-years-chart"></canvas>
+    </div>
+
+<script>
+    const labels = {{ labels|safe }};
+    const grades = {{ grades|safe }};
+
+    function getGradeInfo(value) {
+        if (value >= 90) return { text: 'ممتاز', color: 'green', range: '90 - 100' };
+        if (value >= 80) return { text: 'جيد جدًا', color: '#0d6efd', range: '80 - 89' };
+        if (value >= 65) return { text: 'جيد', color: '#ffc107', range: '65 - 79' };
+        if (value >= 50) return { text: 'مقبول', color: 'orange', range: '50 - 64' };
+        return { text: 'راسب', color: 'red', range: 'أقل من 50' };
+    }
+
+    const pointColors = grades.map(g => getGradeInfo(g).color);
+
+    // 🔹 Plugin لعرض النص دائمًا فوق النقاط
+    const showLabelsPlugin = {
+    id: 'showLabelsPlugin',
+    afterDatasetsDraw(chart) {
+        const { ctx, chartArea } = chart; // إضافة chartArea لمعرفة حدود الرسم
+
+        chart.data.datasets.forEach((dataset, i) => {
+            const meta = chart.getDatasetMeta(i);
+
+            meta.data.forEach((point, index) => {
+                const value = dataset.data[index];
+                const info = getGradeInfo(value);
+
+                ctx.save();
+                ctx.font = '12px Arial';
+                ctx.fillStyle = info.color;
+                ctx.textAlign = 'center';
+
+                // النص فوق النقطة عادة، وإذا الدرجة 100% أو النص سيخرج خارج الحد الأعلى، نضعه تحت النقطة
+                let textY = point.y - 12;
+                if (value >= 100 || textY < chartArea.top + 5) {
+                    textY = point.y + 15; // يظهر تحت النقطة
+                }
+
+                ctx.fillText(`${value}% (${info.text})`, point.x, textY);
+                ctx.restore();
+            });
+        });
+    }
+};
+
+    new Chart(
+        document.getElementById('all-years-chart').getContext('2d'),
+        {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '',
+                    data: grades,
+                    borderColor: 'black',
+                    backgroundColor: 'rgba(0,0,0,0.05)',
+                    pointBackgroundColor: pointColors,
+                    pointBorderColor: pointColors,
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: false,
+                    pointRadius: 7,
+                    pointHoverRadius: 9
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { 
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        grid: { display: false }, 
+                        ticks: { font: { size: 14 }, color: "black" }
+                    },
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100, 
+                        grid: { display: false },
+                        ticks: { color: "black" }
+                    }
+                }
+            },
+            plugins: [showLabelsPlugin]
+        }
+    );
+
+    // ===== المعدل العام =====
+    const sum = grades.reduce((acc, val) => acc + val, 0);
+const avg = sum / grades.length; // المعدل الفعلي
+
+// إذا العدد صحيح، نعرض بدون كسور، وإذا كسري نعرض بكسور
+const displayAvg = Number.isInteger(avg) ? avg : avg.toFixed(2);
+
+const overallInfo = getGradeInfo(avg);
+
+document.getElementById('average').innerText = displayAvg + ' %';
+document.getElementById('grade').innerText = overallInfo.text; // بدون النطاق
+document.getElementById('grade').style.color = 'black'; // ثابت أسود
+
+    </script>
+
+</div>
+{% endblock %}

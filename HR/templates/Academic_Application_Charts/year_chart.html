@@ -1,0 +1,134 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/chart.min.js' %}"></script>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <!-- السجل الأكاديمي للطالب -->
+    <div class="student-card" style="background: white; color: black; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 40px; text-align:center;">
+        <h2 style="margin: 0; font-weight: 700;"> مخططات التقدم الأكاديمي لكل سنه  للطالب :<br><p>{{ student.person.name.arabic_full_name }}</p></h2>
+    </div>
+
+    <style>
+        /* مركز كل المخططات أفقياً */
+        .chart-container {
+            width: 50%; /* نصف عرض الصفحة */
+            margin: 20px auto; /* تلقائي أفقياً + مسافة رأسية */
+        }
+        canvas {
+            display: block;
+            width: 100% !important; /* يجعل الرسم متجاوب */
+            height: 300px !important; /* ارتفاع ثابت */
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">مخططات التقدم الاكاديمي لكل سنه: {{ student.name }}</h2>
+
+    {% for year in yearly_data %}
+        <h3 style="text-align:center;">السنة: {{ year.year }}</h3>
+        <div style="text-align:center; font-size:16px; margin-bottom:30px;">
+            <strong>المعدل:</strong> <span id="avg-{{ forloop.counter }}"></span><br>
+            <strong>التقدير:</strong> <span id="grade-{{ forloop.counter }}" style="color:black;"></span>
+        </div>
+        <div class="chart-container">
+            <canvas id="chart-{{ forloop.counter }}"></canvas>
+        </div>
+        
+
+        <script>
+            const labels{{ forloop.counter }} = ["الترم الأول", "الترم الثاني"];
+            const grades{{ forloop.counter }} = {{ year.grades|safe }};
+
+            function getGradeInfo(value) {
+                if (value >= 90) return { text: 'ممتاز', color: 'green', range: '90 - 100' };
+                if (value >= 80) return { text: 'جيد جدًا', color: '#0d6efd', range: '80 - 89' };
+                if (value >= 65) return { text: 'جيد', color: '#ffc107', range: '65 - 79' };
+                if (value >= 50) return { text: 'مقبول', color: 'orange', range: '50 - 64' };
+                return { text: 'راسب', color: 'red', range: 'أقل من 50' };
+            }
+
+            const pointColors{{ forloop.counter }} = grades{{ forloop.counter }}.map(g => getGradeInfo(g).color);
+
+            // 🔹 Plugin لعرض النص دائمًا فوق النقاط
+            const showLabelsPlugin{{ forloop.counter }} = {
+    id: 'showLabelsPlugin',
+    afterDatasetsDraw(chart) {
+        const { ctx, chartArea } = chart; // إضافة chartArea لمعرفة حدود المخطط
+
+        chart.data.datasets.forEach((dataset, i) => {
+            const meta = chart.getDatasetMeta(i);
+
+            meta.data.forEach((point, index) => {
+                const value = dataset.data[index];
+                const info = getGradeInfo(value);
+
+                ctx.save();
+                ctx.font = '12px Arial';
+                ctx.fillStyle = info.color;
+                ctx.textAlign = 'center';
+
+                // تحديد مكان النص: فوق النقطة عادة، وإذا كانت الدرجة 100% أو أعلى من الحد الأعلى، نضعه تحت
+                let textY = point.y - 12;
+                if (value >= 100 || textY < chartArea.top + 5) {
+                    textY = point.y + 15; // النص يظهر تحت النقطة
+                }
+
+                ctx.fillText(`${value}% (${info.text})`, point.x, textY);
+                ctx.restore();
+            });
+        });
+    }
+};
+
+
+            new Chart(
+                document.getElementById('chart-{{ forloop.counter }}').getContext('2d'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: labels{{ forloop.counter }},
+                        datasets: [{
+                            label: '',
+                            data: grades{{ forloop.counter }},
+                            borderColor: 'black',
+                            backgroundColor: 'rgba(0,0,0,0.05)',
+                            pointBackgroundColor: pointColors{{ forloop.counter }},
+                            pointBorderColor: pointColors{{ forloop.counter }},
+                            pointBorderWidth: 2,
+                            tension: 0.3,
+                            fill: false,
+                            pointRadius: 7,
+                            pointHoverRadius: 9
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: { grid: { display: false } },
+                            y: { beginAtZero: true, max: 100, grid: { display: false } }
+                        }
+                    },
+                    plugins: [showLabelsPlugin{{ forloop.counter }}]
+                }
+            );
+// ===== المعدل والتقدير =====
+const sum{{ forloop.counter }} = grades{{ forloop.counter }}.reduce((acc, val) => acc + val, 0);
+const rawAvg{{ forloop.counter }} = sum{{ forloop.counter }} / grades{{ forloop.counter }}.length;
+const average{{ forloop.counter }} = Number.isInteger(rawAvg{{ forloop.counter }}) ? rawAvg{{ forloop.counter }} : rawAvg{{ forloop.counter }}.toFixed(2);
+const overallInfo{{ forloop.counter }} = getGradeInfo(rawAvg{{ forloop.counter }});
+
+document.getElementById('avg-{{ forloop.counter }}').innerText = average{{ forloop.counter }} + ' %';
+document.getElementById('grade-{{ forloop.counter }}').innerText = overallInfo{{ forloop.counter }}.text;
+document.getElementById('grade-{{ forloop.counter }}').style.color = 'black';
+
+   </script>
+    {% endfor %}
+</body>
+{% endblock %}

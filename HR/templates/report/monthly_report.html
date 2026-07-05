@@ -1,0 +1,192 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <div style="margin-bottom: 20px" class="no-print">
+    <label>الشهر الهجري:
+      <select id="search-month" style="width: 120px; height: 30px">
+        <option value="">كل الأشهر</option>
+        <option value="محرم">محرم</option>
+        <option value="صفر">صفر</option>
+        <option value="ربيع الأول">ربيع الأول</option>
+        <option value="ربيع الآخر">ربيع الآخر</option>
+        <option value="جمادى الأولى">جمادى الأولى</option>
+        <option value="جمادى الآخرة">جمادى الآخرة</option>
+        <option value="رجب">رجب</option>
+        <option value="شعبان">شعبان</option>
+        <option value="رمضان">رمضان</option>
+        <option value="شوال">شوال</option>
+        <option value="ذو القعدة">ذو القعدة</option>
+        <option value="ذو الحجة">ذو الحجة</option>
+      </select>
+    </label>
+    <label>السنة الهجرية:
+      <input type="number" id="search-year" />
+    </label>
+    <button onclick="filterTables()" style="width:80px">بحث</button>
+    <button onclick="resetFilter()" style="width:100px">عرض الكل</button>
+  </div>
+
+  <h2 class="mb-4">المخططات الثقافيه الشهرية لكل جانب</h2>
+  <div id="chartsContainer"></div>
+  <p id="noDataMessage" class="text-danger" style="display:none; font-weight:bold;">لا توجد بيانات لهذا الشهر أو السنة</p>
+</div>
+
+<style>
+  @media print {
+    .no-print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+  .canvas-chart {
+    width: 100% !important;
+    height: 300px !important;
+  }
+</style>
+
+<script src="{% static 'js/chart.umd.min.js' %}"></script>
+<script src="{% static 'js/chartjs-plugin-datalabels.min.js' %}"></script>
+
+<script>
+const chartsContainer = document.getElementById("chartsContainer");
+const noDataMessage = document.getElementById("noDataMessage");
+
+const alabadi_data = {{ alabadi_data|safe }};
+const cultural_data = {{ cultural_data|safe }};
+const behavioral_data = {{ behavioral_data|safe }};
+
+// دالة لتحويل الأرقام العربية الشرقية
+function toArabicNumber(n){
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+const HIJRI_MONTH_NAMES = {
+  1:"محرم",2:"صفر",3:"ربيع الأول",4:"ربيع الآخر",
+  5:"جمادى الأولى",6:"جمادى الآخرة",7:"رجب",8:"شعبان",
+  9:"رمضان",10:"شوال",11:"ذو القعدة",12:"ذو الحجة"
+};
+
+const sides = [
+  {key:"alabadi", title:"الجانب العبادي", fields:["الاستيقاظ قبل الفجر","الاستغفار","صلاة الجماعة","المحافظة على الصلاة","الدعاء","تلاوة القرآن","التسبيح","صلاة الجمعة","التعامل مع الملازم","الحقيقة والأخبار"], maxValue:10, data: alabadi_data},
+  {key:"cultural", title:"الجانب الثقافي", fields:["استيعابه لهدى الله","الوعي الثقافي","تقبله وتفاعله مع هدى الله","الروحية الجهادية","تقبله للتوجيهات ضمن المجموعة","تقبله لتوجيهات القائمين"], maxValue:5, data: cultural_data},
+  {key:"behavioral", title:"الجانب السلوكي", fields:["الإحسان","الحكمة","الانسجام","التأثير","تحسن التصرف","النظافة","المبادرة","الإتقان","المظهر","الالتزام والانضباط","الصبر والتحمل","السرية","الحس الأمني","تقدير المسؤولية"], maxValue:5, data: behavioral_data},
+];
+
+const allKeys = new Set([...Object.keys(alabadi_data), ...Object.keys(cultural_data), ...Object.keys(behavioral_data)]);
+const sortedKeys = Array.from(allKeys).sort((a,b)=>{
+  const [y1,m1] = a.split("-").map(Number);
+  const [y2,m2] = b.split("-").map(Number);
+  return y1!==y2 ? y1-y2 : m1-m2;
+});
+
+sortedKeys.forEach(key=>{
+  const [year,month] = key.split("-").map(Number);
+  const card = document.createElement("div");
+  card.classList.add("card","mb-4","p-3","shadow-sm");
+  card.innerHTML = `<h4>السنة: ${toArabicNumber(year)} - الشهر: ${HIJRI_MONTH_NAMES[month]}</h4>`;
+  chartsContainer.appendChild(card);
+
+  sides.forEach(sideInfo=>{
+    const sideData = sideInfo.data;
+    const div = document.createElement("div");
+    div.classList.add("mb-4");
+    if(sideData && sideData[key]){
+      let values = sideInfo.fields.map(f=> sideData[key][f]!==undefined ? sideData[key][f] : null);
+      if(values.some(v=>v!==null)){
+        div.innerHTML = `<h5>${sideInfo.title}</h5><canvas class="canvas-chart"></canvas>`;
+        card.appendChild(div);
+
+        new Chart(div.querySelector("canvas"), {
+          type:"line",
+          data:{
+            labels:sideInfo.fields.map(f => f), // يمكن تحويل الحروف العربية إذا أردت
+            datasets:[{
+              label:"القيم",
+              data:values,
+              backgroundColor:"rgba(54,162,235,0.3)",
+              borderColor:"black",
+              borderWidth:2,
+              tension:0.3,
+              fill:false,
+              pointRadius:5
+            }]
+          },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            plugins:{
+              legend:{display:false},
+              tooltip:{callbacks:{label: ctx => toArabicNumber(ctx.raw)}},
+              datalabels:{
+                display:true,
+                color:"black",
+                font:{size:12, weight:"bold"},
+                anchor: 'center',
+                align: function(context){
+                  const index = context.dataIndex;
+                  const dataset = context.dataset.data;
+                  return index === dataset.length - 1 ? 'bottom' : 'top';
+                },
+                formatter:value => toArabicNumber(value)
+              }
+            },
+            scales:{
+              y:{
+                beginAtZero:true,
+                min:0,
+                max:sideInfo.maxValue,
+                ticks:{
+                  stepSize:1,
+                  padding:10,
+                  font:{size:12},
+                  callback: val => toArabicNumber(val)
+                },
+                grid:{display:false}
+              },
+              x:{
+                ticks:{font:{size:14}},
+                grid:{display:false}
+              }
+            }
+          },
+          plugins:[ChartDataLabels]
+        });
+
+      } else {
+        div.innerHTML = `<h5>${sideInfo.title}</h5><p class="text-danger">لا يوجد مخطط لهذا الجانب للشهر ${HIJRI_MONTH_NAMES[month]}</p>`;
+        card.appendChild(div);
+      }
+    } else {
+      div.innerHTML = `<h5>${sideInfo.title}</h5><p class="text-danger">لا يوجد مخطط لهذا الجانب للشهر ${HIJRI_MONTH_NAMES[month]}</p>`;
+      card.appendChild(div);
+    }
+  });
+});
+
+function filterTables(){
+  const year = document.getElementById("search-year").value;
+  const month = document.getElementById("search-month").value;
+  let anyVisible = false;
+  document.querySelectorAll("#chartsContainer .card").forEach(card=>{
+    const text = card.querySelector("h4").textContent;
+    if((!year || text.includes(year)) && (!month || text.includes(month))){
+      card.style.display="";
+      anyVisible = true;
+    } else card.style.display="none";
+  });
+  noDataMessage.style.display = anyVisible ? "none" : "block";
+}
+
+function resetFilter(){
+  document.getElementById("search-year").value="";
+  document.getElementById("search-month").value="";
+  document.querySelectorAll("#chartsContainer .card").forEach(card=>{ card.style.display=""; });
+  noDataMessage.style.display = "none";
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+.daisyui-sidebar .daisyui-logo img {
+    margin: 20px auto;  /* مسافة 20px من الأعلى والأسفل وتوسيط أفقياً */
+    padding: 10px;      /* padding داخلي حول الصورة */
+    max-height: 80px;   /* تحديد أقصى ارتفاع */
+    max-width: 128px;   /* تحديد أقصى عرض */
+}

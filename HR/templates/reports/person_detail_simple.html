@@ -1,0 +1,1666 @@
+{% extends 'reports/base.html' %}
+{% load static %}
+    <title>تقرير {{ person.name }} - نظام إدارة الموارد البشرية</title>
+    {% block content %}
+    <!-- Bootstrap RTL CSS -->
+
+<link href="{% static 'bootstrap/css/bootstrap.rtl.min.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.0.1-web/css/all.min.css' %}">
+
+    <!-- Mermaid.js for flowcharts -->
+    <script src="{% static 'js/mermaid.min.js' %}"></script>
+
+    
+    <style>
+        src: url("{% static 'fonts/NotoSansArabic/NotoSansArabic-Light.ttf' %}") format('truetype');
+        * {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        
+      
+        
+        /* Header */
+        .report-header {
+            text-align: center;
+            border: 2px solid #000;
+            padding: 30px;
+            margin-bottom: 30px;
+            background: white;
+        }
+        
+        .org-info {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 15px;
+        }
+        
+        .org-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .org-dept {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .org-contact {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .report-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 15px 0 10px 0;
+        }
+        
+        .person-name {
+            font-size: 16px;
+            font-weight: 600;
+            border: 1px solid #000;
+            padding: 8px 15px;
+            display: inline-block;
+        }
+        
+        .print-date {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #666;
+            display: none;
+        }
+        
+        /* Controls */
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        
+        .controls-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .control-item label {
+            font-size: 13px;
+            cursor: pointer;
+            margin: 0;
+        }
+        
+        .action-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn-simple {
+            padding: 8px 20px;
+            border: 1px solid #333;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            margin: 0 5px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .btn-simple:hover {
+            background: #333;
+            color: white;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 25px;
+            border: 1px solid #333;
+            background: white;
+        }
+        
+        .section-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #333;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .section-content {
+            padding: 15px;
+        }
+        
+        /* Tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        .info-table td {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+        
+        .info-table .label {
+            font-weight: 600;
+            background: #f8f9fa;
+            width: 180px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .data-table th {
+            background: #333;
+            color: white;
+            padding: 8px 10px;
+            text-align: right;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #333;
+        }
+        
+        .data-table td {
+            padding: 6px 10px;
+            border: 1px solid #dee2e6;
+            font-size: 12px;
+        }
+        
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        /* Badges */
+        .badge-simple {
+            padding: 2px 8px;
+            border: 1px solid #333;
+            font-size: 11px;
+            font-weight: 600;
+            background: white;
+            color: #000;
+        }
+        
+        .badge-success {
+            color: #28a745;
+            border-color: #28a745;
+        }
+        
+        .badge-danger {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        
+        .badge-primary {
+            color: #007bff;
+            border-color: #8d8d8d;
+        }
+        
+        .badge-warning {
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+        
+        /* Stats */
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            border: 1px solid #dee2e6;
+            background: #f8f9fa;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            flex: 1;
+            border-left: 1px solid #dee2e6;
+        }
+        
+        .stat-item:last-child {
+            border-left: none;
+        }
+        
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Academic Timeline and Flow Charts */
+        .academic-timeline {
+            margin: 20px 0;
+        }
+        
+        .year-section {
+            margin-bottom: 30px;
+            border: 2px solid #dbdbdb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .year-header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        .semester-section {
+            border-bottom: 1px solid #dee2e6;
+            background: #f8f9fa;
+        }
+        
+        .semester-section:last-child {
+            border-bottom: none;
+        }
+        
+        .semester-header {
+            background: #e9ecef;
+            padding: 10px 15px;
+            font-weight: 600;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 15px;
+        }
+        
+        .subject-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .subject-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .subject-grade {
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .grade-excellent {
+            background: #28a745;
+            color: white;
+        }
+        .stat-label{
+            font-size:20px
+        }
+        .grade-good {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .grade-fair {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .grade-poor {
+            background: #dc3545;
+            color: white;
+        }
+        
+        /* Flowchart container */
+        .flowchart-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .mermaid {
+            direction: ltr;
+        }
+        
+        /* Academic Performance Cards */
+        .performance-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .performance-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .performance-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .performance-card.excellent {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+        
+        .performance-card.good {
+            border-color: #17a2b8;
+            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+            color: white;
+        }
+        
+        .performance-card.fair {
+            border-color: #ffc107;
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            color: #333;
+        }
+        
+        .performance-card.poor {
+            border-color: #dc3545;
+            background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+            color: white;
+        }
+        
+        .performance-card h4 {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .performance-card .big-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .performance-card .description {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        /* Print Styles */
+     @media print {
+        /* نطبع كل شيء بدون أي تعديل */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            zoom: 100% !important; /* نفس الحجم */
+        }
+
+        @page {
+            size: auto; /* خلي الصفحة حسب حجم التصميم */
+            margin: 0;   /* بدون هوامش */
+        }
+
+        /* إظهار كل العناصر */
+        .no-print {
+            display: block !important;
+        }
+        .print-date {
+            display: block !important;
+        }
+         /* 🔥 منع تقسيم الجدول */
+    table, tr, td, th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+    
+        .flowchart-container,
+        .mermaid {
+            display: block !important;
+        }
+    }
+        @media (max-width: 768px) {
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-row {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                border-left: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+            
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+  
+
+    <div class="container">
+
+        <div class="controls no-print">
+    <div class="controls-title">خيارات العرض:</div>
+    <div class="controls-grid">
+        <div class="control-item">
+            <input type="checkbox" id="show-basic" checked onchange="toggleSection('basic-info')">
+            <label for="show-basic">المعلومات الأساسية</label>
+        </div>
+        {% if is_student %}
+        <div class="control-item">
+            <input type="checkbox" id="show-student" checked onchange="toggleSection('student-info')">
+            <label for="show-student">معلومات الطالب</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-grades" checked onchange="toggleSection('grades-section')">
+            <label for="show-grades">الدرجات</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-performance" checked onchange="toggleSection('academic-performance')">
+            <label for="show-performance">ملخص الأداء</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-timeline" checked onchange="toggleSection('academic-timeline')">
+            <label for="show-timeline">الجدول الزمني الأكاديمي</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-progress" checked onchange="toggleSection('progress-timeline')">
+            <label for="show-progress">مخططات للتقدم الاكاديمي </label>
+        </div>
+        {% endif %}
+        {% if is_staff %}
+        <div class="control-item">
+            <input type="checkbox" id="show-staff" checked onchange="toggleSection('staff-info')">
+            <label for="show-staff">معلومات الموظف</label>
+        </div>
+        {% endif %}
+        <div class="control-item">
+            <input type="checkbox" id="show-violations" checked onchange="toggleSection('violations-section')">
+            <label for="show-violations">المخالفات</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-courses" checked onchange="toggleSection('courses-section')">
+            <label for="show-courses">المؤهلات والدورات </label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-medical" checked onchange="toggleSection('medical-section')">
+            <label for="show-medical">السجل الطبي</label>
+        </div>
+        <div class="control-item">
+            <input type="checkbox" id="show-covenants" checked onchange="toggleSection('covenants-section')">
+            <label for="show-covenants">العهد</label>
+        </div>
+        <div class="control-item">
+    <input type="checkbox" id="show-tutors" checked onchange="toggleSection('tutors-section')">
+    <label for="show-tutors">التدريب</label>
+</div>
+       
+   
+        <div class="control-item">
+  <input type="checkbox" id="show-payments" checked onchange="toggleSection('payments-section')">
+  <label for="show-payments">الإعتمادية</label>        
+</div>
+<div class="control-item">
+    <input type="checkbox" id="show-attendance" checked onchange="toggleSection('attendance-section')">
+    <label for="show-attendance">ملخص الحضور</label>        
+</div>
+<div class="control-item">
+    <input type="checkbox" id="show-daily-attendance" checked onchange="toggleSection('daily-attendance-section')">
+    <label for="show-daily-attendance">سجل الحضور اليومي</label>        
+</div>
+</div>
+
+
+        <!-- Action Buttons -->
+        <div class="action-buttons no-print">
+       
+            <button class="btn-simple" onclick="toggleAll()">
+                <i class="fas fa-eye me-1"></i>
+                إظهار/إخفاء الكل
+            </button>
+        </div>
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "ahmed" %}
+        <!-- Basic Information -->
+        <div id="basic-info" class="section">
+            <div class="section-header">المعلومات الأساسية</div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <td class="label">الاسم الكامل:</td>
+                        <td>{{ person.name |default:"غير محدد"}}</td>
+                         <td class="label">الحالة الاجتماعية:</td>
+                        <td>{{ person.marital_status|default:"غير محدد" }}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="label">تاريخ الميلاد:</td>
+                        <td>{{ person.date_of_birth |default:"غير محدد"}}</td>
+                        <td class="label">رقم الجوال:</td>
+                        <td>{{ person.phone|default:"غير محدد" }}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="label">العنوان:</td>
+                        <td>{{ person.address |default:"غير محدد"}}</td>
+                        <td class="label">المؤهل العلمي:</td>
+                        <td colspan="3">{{person.academic_qualification|default:"غير محدد"}}</td>
+                        
+                     </tr>
+                    <tr>
+                       
+                    </tr>
+                    <tr>    <td class="label"> معدل الثانوية العامة:</td>
+                        <td>{{ person.high_school_grade|default:"غير محدد"}}</td>
+                   
+                      <td class="label">البريد الإلكتروني:</td>
+                        <td>{{ person.email|default:"غير محدد" }}</td>
+                        
+                    </tr>
+                     <tr>
+                      
+                      <td class="label">التوقف :</td>
+                        <td>{{ person.typestatus|default:"غير محدد"}}</td>
+                       <td class="label">سبب التوقف :</td>
+  <td >{{ person.stop_reason|default:"غير محدد" }}</td>
+     
+                      </tr>
+                    <tr>
+                      <tr>
+ <td class="label"> تاريخ الدخول :</td>
+                        <td>{{ person.entry_date|default:"غير محدد" }}</td>
+                   
+  <td class="label">تاريخ الخروج:</td>
+  <td >{{ person.exit_date|default:"غير محدد" }}</td>
+</tr>
+
+                      </tr>
+                </table>
+                
+            </div>
+        </div>
+{% endif %}
+        <!-- Student Information -->
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "abas" or request.user.username == "ahmed" %}
+        {% if is_student %}
+        <div id="student-info" class="section">
+            <div class="section-header">معلومات الطالب</div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <td class="label">الجامعة:</td>
+                        <td>{{ student.university|default:"غير محدد" }}</td>
+                     
+                      <td class="label">التخصص:</td>
+                        <td>{{ student.specialization|default:"غير محدد" }}</td>
+                      </tr>
+                    <tr>
+                        <td class="label">تاريخ البداية:</td>
+                        <td>{{ student.start_date|default:"غير محدد"}}</td>
+                        <td class="label">تاريخ الانتهاء:</td>
+                        <td>{{ student.stop_date|default:"لم ينته" }}</td>
+                    </tr>
+                    <tr>
+  <td class="label">سبب الانتهاء :</td>
+  <td colspan="3">{{ student.stop_reason|default:"غير محدد" }}</td>
+</tr>
+
+                </table>
+            </div>
+        </div>
+{% endif %}
+{% if is_student %}
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "abas" %}
+<div id="progress-timeline" class="section">
+            <div class="section-header">مخططات التقدم الأكاديمي</div>
+            <div class="section-content">
+                {% if enrollments_by_year %}
+                <div class="flowchart-container" 
+                    style="margin-top: 15px; padding: 20px; border-radius: 12px; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); text-align: center;">
+
+                     <h3 style="background-color: white; color: black; display: inline-block; padding: 10px 20px; border-radius: 8px; margin-bottom: 25px; font-weight: 600;">
+                       خيارات المخططات
+                     </h3>
+
+                  <div style="margin-top: 20px;">
+                    <a href="{% url 'term_chart' student.id %}" class="flow-link">
+                     مخططات للتقديم الاكاديمي لكل ترم
+                    </a>
+                    <a href="{% url 'full_academic_progress' student.id %}" class="flow-link">
+ مخطط التقدم الأكاديمي لجميع الاترام                   
+                    </a>
+
+                    <a href="{% url 'year_chart' student.id %}" class="flow-link">
+                    مخططات للتقديم الاكاديمي لكل سنه
+                    </a>
+                    
+                    <a href="{% url 'summary_chart' student.id %}" class="flow-link">
+                   مخطط للتقديم الاكاديمي لجميع السنين
+                   </a>
+    </div>
+</div>
+{% endif %}
+<style>
+.flow-link {
+    margin: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    background:#333; /* لون الوضع الطبيعي */
+    color: white; /* النص أبيض */
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+
+</style>
+
+        
+<!-- Grades Section -->
+  <div id="grades-section" class="section">
+    <div class="section-header">الدرجات والمواد الدراسية</div>
+    <div class="section-content">
+
+        {% if grade_stats %}
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-label">المواد المجتازة</div>
+                <span class="stat-number">{{ grade_stats.passed_subjects }}</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">إجمالي المواد</div>
+                <span class="stat-number">{{ grade_stats.total_subjects }}</span>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if enrollments %}
+
+        <div class="table-wrapper">
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5"
+                   style="border-collapse:collapse; width:100%;">
+
+                <thead>
+                    <tr>
+                        <th style="background-color:black; color:white;">المادة</th>
+                        <th style="background-color:black; color:white;">السنة</th>
+                        <th style="background-color:black; color:white;">الترم</th>
+                        <th style="background-color:black; color:white;">الدرجة</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for enrollment in enrollments %}
+                    <tr>
+                        <td>{{ enrollment.subject.name }}</td>
+                        <td>{{ enrollment.learn_year }}</td>
+                        <td>{{ enrollment.semester }}</td>
+                        <td>
+                            {% if enrollment.mrak_of_subject %}
+                                <span class="badge-simple 
+                                    {% if enrollment.mrak_of_subject >= 85 %}badge-success
+                                    {% elif enrollment.mrak_of_subject >= 70 %}badge-primary
+                                    {% elif enrollment.mrak_of_subject >= 50 %}badge-warning
+                                    {% else %}badge-danger{% endif %}">
+                                    {{ enrollment.mrak_of_subject }}
+                                </span>
+                            {% else %}
+                                لم يتم إدخالها
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        {% else %}
+        <div class="no-data">لا توجد مواد مسجلة</div>
+        {% endif %}
+
+    </div>
+</div>
+            
+        <!-- Academic Performance Overview -->
+        <div id="academic-performance" class="section">
+            <div class="section-header">ملخص الأداء الأكاديمي</div>
+            <div class="section-content">
+                {% if performance_data %}
+                    <div class="performance-cards">
+                        {% for perf in performance_data %}
+                        <div class="performance-card {{ perf.performance_type }}">
+                            <h4>{{ perf.year }} - {{ perf.semester }}</h4>
+                            <div class="big-number">{{ perf.passed_subjects }}/{{ perf.total_subjects }}</div>
+                            <div class="description">نجح في {{ perf.passed_subjects }} من أصل {{ perf.total_subjects }} مواد</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="no-data">لا توجد بيانات أداء أكاديمي</div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Academic Timeline -->
+   <div id="academic-timeline" class="section">
+    <div class="section-header">الجدول الزمني الأكاديمي</div>
+
+    <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+        <div class="section-content">
+
+            {% if enrollments_by_year %}
+                {% for year, semesters in enrollments_by_year.items %}
+                <div style="margin-bottom: 30px;">
+
+                    <h5 style="background:#f8f9fa; padding:10px; margin:0 0 15px 0;
+                               border:1px solid #dee2e6; font-weight:700; text-align:center;">
+                        {{ year }}
+                    </h5>
+
+                    {% for semester, subjects in semesters.items %}
+                    <div style="margin-bottom: 20px;">
+
+                        <h6 style="background:#e9ecef; padding:8px 12px; margin:0 0 10px 0;
+                                   border:1px solid #dee2e6; font-weight:600;">
+                            {{ semester }}
+                        </h6>
+
+                        {% if subjects %}
+                        <table class="data-table" border="1" cellspacing="0" cellpadding="5"
+                               style="border-collapse:collapse; width:100%;">
+
+                            <thead>
+                                <tr>
+                                    <th style="background-color:black; color:white;">م</th>
+                                    <th style="background-color:black; color:white;">اسم المادة</th>
+                                    <th style="background-color:black; color:white;">الدرجة</th>
+                                    <th style="background-color:black; color:white;">التقدير</th>
+                                    <th style="background-color:black; color:white;">تاريخ التسجيل</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for enrollment in subjects %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ enrollment.subject.name }}</td>
+
+                                    <td>
+                                        {% if enrollment.mrak_of_subject %}
+                                            {{ enrollment.mrak_of_subject }}
+                                        {% else %}
+                                            غير محدد
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if enrollment.mrak_of_subject %}
+                                            {% if enrollment.mrak_of_subject >= 90 %}
+                                                ممتاز
+                                            {% elif enrollment.mrak_of_subject >= 80 %}
+                                                جيد جداً
+                                            {% elif enrollment.mrak_of_subject >= 65 %}
+                                                جيد
+                                            {% elif enrollment.mrak_of_subject >= 50 %}
+                                                مقبول
+                                            {% else %}
+                                                راسب
+                                            {% endif %}
+                                        {% else %}
+                                            غير محدد
+                                        {% endif %}
+                                    </td>
+
+                                    <td>{{ enrollment.enrollment_date|date:"d/m/Y" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                        <!-- إحصائيات الترم -->
+                        <div style="margin-top:10px; padding:10px; background:#f8f9fa;
+                                    border:1px solid #dee2e6; font-size:13px;">
+                            <strong>إحصائيات {{ semester }}:</strong>
+
+                            {% with total=subjects|length passed=0 failed=0 no_grade=0 %}
+                                {% for enrollment in subjects %}
+                                    {% if enrollment.mrak_of_subject %}
+                                        {% if enrollment.mrak_of_subject >= 50 %}
+                                            {% with passed=passed|add:1 %}{% endwith %}
+                                        {% else %}
+                                            {% with failed=failed|add:1 %}{% endwith %}
+                                        {% endif %}
+                                    {% else %}
+                                        {% with no_grade=no_grade|add:1 %}{% endwith %}
+                                    {% endif %}
+                                {% endfor %}
+                                إجمالي المواد: {{ total }}
+                            {% endwith %}
+                        </div>
+
+                        {% else %}
+                        <div class="no-data">لا توجد مواد في هذا الترم</div>
+                        {% endif %}
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-data">لا توجد بيانات أكاديمية</div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+        <!-- Academic Flowchart -->
+        <!--  -->
+        
+        <!-- Progress Timeline -->
+        
+                {% else %}
+                
+                    <div class="no-data">لا توجد بيانات لإنشاء مخطط التقدم</div>
+                {% endif %}
+                <!-- رابط مخططات كل ترم -->
+
+
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+<style>
+.flow-link {
+    margin: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    background:#333; /* لون الوضع الطبيعي */
+    color: white; /* النص أبيض */
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.flow-link:hover {
+    background: #555;
+    border-color: #222;
+}
+</style>
+
+
+<!-- Staff Information -->
+  {% if is_staff %}
+{% if request.user.username == "eshaiq" or request.user.username == "asmail" or request.user.username == "muad" or request.user.username == "ahmed" %}
+
+<div id="staff-info" class="section">
+    <div class="section-header">معلومات الموظف</div>
+    <div class="section-content">
+        <table class="info-table">
+            <tr>
+                <td class="label">العمل:</td>
+                <td>{{ staff.position }}</td>
+                <td class="label">تاريخ البداية:</td>
+                <td>{{ staff.start_date }}</td>
+            </tr>
+            <tr>
+                <td class="label">استمرار العمل:</td>
+                <td>
+                    <span class="badge-simple {% if staff.continue_work %}badge-success{% else %}badge-danger{% endif %}">
+                        {% if staff.continue_work %}مستمر{% else %}منتهي{% endif %}
+                    </span>
+                </td>
+                <td class="label">تاريخ الانتهاء:</td>
+                <td>{{ staff.stop_date|default:"لا يوجد" }}</td>
+            </tr>
+            <tr>
+                <td class="label">المهام الموكلة:</td>
+                <td colspan="3">
+                    <span class="badge-simple {% if staff.text_notes %}badge-primary{% else %}badge-secondary{% endif %}">
+                        {% if staff.text_notes %}
+                            {{ staff.text_notes }}
+                        {% else %}
+                            لا توجد مهام
+                        {% endif %}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">سبب الانتهاء:</td>
+                <td colspan="3">{{ staff.stop_reason|default:"غير محدد" }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+{% endif %}
+
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "mohammed" %}
+          <div id="payments-section" class="section">
+            <div class="section-header">الإعتمادية</div>
+            <div class="section-content">
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">{{ total_payments|floatformat:0 }}</span>
+                        <div class="stat-label">إجمالي الإعتمادية (ر.ي)</div>
+                        
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ payments|length }}</span>
+                        <div class="stat-label">عدد المعاملات</div>
+                    </div>
+                </div>
+                
+                {% if payments %}
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>الإعتمادية</th>
+                            <th> رعاية</th>
+                            <th>مزاورة</th>
+                            <th>مصروف جيب</th>
+                            <th>تنقلات</th>
+                            <th>قات</th>
+                            <th>مساعدة</th>
+                            <th>إيجار</th>
+                            <th>ملاحظات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in payments|slice:":10" %}
+                        <tr>
+                            <td>{{ payment.date }}</td>
+                            <td>{{ payment.accreditation|floatformat:0 }} ر.ي</td>
+                            <td>{{ payment.salary|default:"لا توجد" }}</td>
+                            <td>{{ payment.visit|default:"لا توجد" }}</td>
+                            <td>{{ payment.expenses|default:"لا توجد" }}</td>
+                            <td>{{ payment.transfers|default:"لا توجد" }}</td>
+                            <td>{{ payment.qat|default:"لا توجد" }}</td>
+                            <td>{{ payment.help|default:"لا توجد" }}</td>
+                            <td>{{ payment.rent|default:"لا توجد" }}</td>
+                            <td>{{ payment.notes|default:"لا توجد" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="no-data">لا توجد مدفوعات مسجلة</div>
+                {% endif %}
+            </div>
+        </div>
+{% endif %}
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "ahmed" %}
+        <!-- Violations Section -->
+<div id="violations-section" class="section">
+    <div class="section-header">المخالفات</div>
+    <div class="section-content">
+        {% if violations %}
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">{{ violations|length }}</span>
+                <div class="stat-label">إجمالي المخالفات</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ unresolved_violations }}</span>
+                <div class="stat-label">غير المحلولة</div>
+            </div>
+        </div>
+
+        <!-- حاوية للتمرير وعرض الجدول المسطر -->
+       <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+
+        
+            <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr style="position: sticky; top:0; background-color: #000; color:#fff; z-index:2;">
+                        <th style="border:1px solid #000;">التاريخ</th>
+                        <th style="border:1px solid #000;">نوع المخالفة</th>
+                        <th style="border:1px solid #000;">الوصف</th>
+                        <th style="border:1px solid #000;">الإجراء المتخذ</th>
+                        <th style="border:1px solid #000;">الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for violation in violations %}
+                    <tr>
+                        <td style="border:1px solid #000;">{{ violation.date }}</td>
+                        <td style="border:1px solid #000;">{{ violation.violation_type }}</td>
+                        <td style="border:1px solid #000;">{{ violation.description }}</td>
+                        <td style="border:1px solid #000;">{{ violation.action_taken|default:"لم يحدد" }}</td>
+                        <td style="border:1px solid #000;">
+                            <span class="badge-simple {% if violation.resolved %}badge-success{% else %}badge-danger{% endif %}">
+                                {% if violation.resolved %}محلول{% else %}غير محلول{% endif %}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <div class="no-data">لا توجد مخالفات</div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% if request.user.username in "asmail eshaiq muad ahmed abas sadiq" %}
+<div id="courses-section" class="section">
+    <div class="section-header">الدورات والمؤهلات</div>
+    <div class="section-content">
+
+        <!-- المؤهلات الأكاديمية -->
+        {% if request.user.username in "abas asmail eshaiq muad ahmed" %}
+        <h6>المؤهلات الأكاديمية:</h6>
+        {% if qualifications %}
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">المؤهل</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">المؤسسة التعليمية</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">سنة التخرج</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">المعدل</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">التقدير</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for qualification in qualifications %}
+                    <tr>
+                        <td>{{ qualification.degree }}</td>
+                        <td>{{ qualification.institution }}</td>
+                        <td>{{ qualification.year }}</td>
+                        <td>{{ qualification.avarg }}</td>
+                        <td>{{ qualification.grade }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-data">لا توجد مؤهلات مسجلة</div>
+        {% endif %}
+        {% endif %}
+
+        <!-- الدورات التطويرية -->
+        {% if request.user.username in "sadiq asmail eshaiq muad ahmed" %}
+        <h6>الدورات التطويرية:</h6>
+        {% if development_courses %}
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">#</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">اسم الدورة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">الجهة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">السنة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">النتيجة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in development_courses %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.entity|default:"غير محدد" }}</td>
+                        <td>{{ course.year|default:"غير محدد" }}</td>
+                        <td>{{ course.result|default:"غير محدد" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            لا توجد دورات تطويرية مسجلة
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <!-- الدورات الأكاديمية -->
+        {% if request.user.username in "abas asmail eshaiq muad ahmed" %}
+        <h6>الدورات الأكاديمية:</h6>
+        {% if AcademicCoursePersonal_courses %}
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">اسم الدورة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">الجهة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">السنة</th>
+                        <th style="position:sticky; top:0; background-color:black; color:white; z-index:2;">النتيجة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for courseAcademic in AcademicCoursePersonal_courses %}
+                    <tr>
+                        <td>{{ courseAcademic.name }}</td>
+                        <td>{{ courseAcademic.entity|default:"غير محدد" }}</td>
+                        <td>{{ courseAcademic.year|default:"غير محدد" }}</td>
+                        <td>{{ courseAcademic.result|default:"غير محدد" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-data">لا توجد دورات أكاديمية مسجلة</div>
+        {% endif %}
+        {% endif %}
+
+        <!-- شرط عام -->
+        {% if not qualifications and not development_courses and not AcademicCoursePersonal_courses %}
+        <div class="no-data" style="font-weight:bold; color:red; margin-top:10px;">
+            لا توجد أي مؤهلات أو دورات مسجلة
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
+
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "ahmed" %}
+<div id="attendance-section" class="section">
+    <div class="section-header">ملخص الحضور</div>
+    <div class="section-content">
+
+        {% if attendance_summary %}
+        <div style="max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5"
+                   style="border-collapse:collapse; width:100%;">
+
+                <thead style="background-color:#000; color:#fff;">
+                    <tr>
+                        <th>السنة</th>
+                        <th>الشهر</th>
+                        <th>عدد ايام الشهر</th>
+                        <th>حضور</th>
+                        <th>مزاوره</th>
+                        <th>غياب</th>
+                        <th>دوره</th>
+                        <th>مذاكره</th>
+                        <th>مهمه</th>
+                        <th>آخر يوم مزاور(م)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for a in attendance_summary %}
+                    <tr>
+                        <td>{{ a.year|default:"0" }}</td>
+                        <td>{{ a.month|default:"0" }}</td>
+                        <td>{{ a.days_in_month|default:"0" }}</td>
+
+                        <td style="background-color:white;">{{ a.present|default:"0" }}</td>
+                        <td style="background-color:yellow;">{{ a.sick|default:"0" }}</td>
+                        <td style="background-color:#d3d3d3;">{{ a.absent|default:"0" }}</td>
+                        <td style="background-color:#ffcc99;">{{ a.permission|default:"0" }}</td>
+                        <td style="background-color:#90ee90;">{{ a.excused|default:"0" }}</td>
+                        <td style="background-color:#add8e6;">{{ a.study|default:"0" }}</td>
+                    <td style="background-color:#fffde7; font-weight:bold; text-align:center;">
+            {% if a.last_m_day %}
+                يوم {{ a.last_m_day }}
+            {% else %}
+                -
+            {% endif %}
+        </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        {% else %}
+        <div class="no-data" style="font-weight:bold; color:red; margin-top:10px;">
+            لا توجد سجلات حضور
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endif %}
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "ahmed" %}
+
+<style>
+.data-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #000;
+    color: #fff;
+    z-index: 20;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+</style>
+
+<div id="daily-attendance-section" class="section">
+    <div class="section-header">سجل الحضور اليومي</div>
+    <div class="section-content">
+
+        {% if daily_records %}
+        <div style="max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+
+            <table class="data-table" border="1" cellspacing="0" cellpadding="5"
+                   style="border-collapse:collapse; width:100%;">
+
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>اليوم</th>
+                        <th>وقت الخروج</th>
+                        <th>وقت الدخول</th>
+                        
+                        <th>الملاحظات</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for record in daily_records %}
+                    <tr>
+                        <td>{{ record.date|date:"Y-m-d" }}</td>
+                        <td>{{ record.day_name|default:"-" }}</td>
+                        <td style="text-align:center;">{{ record.check_out|time:"H:i" }}</td>
+                        <td style="text-align:center;">{{ record.check_in|time:"H:i" }}</td>
+                        
+                        <td style="text-align:right;">{{ record.notes|default:"-" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        {% else %}
+        <div class="no-data" style="font-weight:bold; color:red; margin-top:10px;">
+            لا توجد سجلات حضور يومية
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endif %}
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "mjad" %}
+        <!-- Medical Section -->
+          <div id="medical-section" class="section">
+    <div class="section-header">السجل الطبي</div>
+    <div class="section-content">
+        {% if medical_records %}
+        
+        <!-- حاوية للتمرير وعرض الجدول -->
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr style="position: sticky; top:0; background-color: #000; color: #fff; z-index:2;">
+                        <th style="border:1px solid #000;">التاريخ</th>
+                        <th style="border:1px solid #000;">الحالة الصحية</th>
+
+                        <th style="border:1px solid #000;">نوع المرض </th>
+                        <th style="border:1px solid #000;">العلاجات</th>
+                        <th style="border:1px solid #000;">الملاحظات</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    {% for record in medical_records %}
+                    <tr>
+                        <td style="border:1px solid #000;">{{ record.date }}</td>
+                        <td style="border:1px solid #000;">
+                            <span class="badge-simple {% if record.status == 'سليم' %}badge-success{% elif record.status == 'مريض' %}badge-warning{% else %}badge-danger{% endif %}">
+                                {{ record.status }}
+                            </span>
+
+                        </td>
+                         <td style="border:1px solid #000;">{{ record.type_sex }}</td>
+                         <td style="border:1px solid #000;">{{ record.medicines }}</td>
+                         <td style="border:1px solid #000;">{{ record.notes }}</td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% else %}
+        <div class="no-data">لا توجد سجلات طبية</div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% if request.user.username == "asmail" or request.user.username == "eshaiq" or request.user.username == "muad" or request.user.username == "abas" %}   
+
+        <!-- Covenants Section -->
+        <div id="covenants-section" class="section">
+    <div class="section-header">العهد</div>
+    <div class="section-content">
+        {% if covenant_details %}
+
+        <!-- حاوية للتمرير وعرض الجدول -->
+        <div style="max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr style="position: sticky; top:0; background-color: #000; color: #fff; z-index:2;">
+                        <th style="border:1px solid #000;">نوع العهدة</th>
+                        <th style="border:1px solid #000;">اسم العهدة</th>
+                        <th style="border:1px solid #000;">الكمية</th>
+                        <th style="border:1px solid #000;">العهدة</th>
+                        <th style="border:1px solid #000;">تاريخ الاستلام</th>
+                        <th style="border:1px solid #000;">تاريخ الرجوع</th>
+                        <th style="border:1px solid #000;">الملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for covenant in covenant_details %}
+                    <tr>
+                        <td style="border:1px solid #000;">{{ covenant.type_covenant|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">
+                            <span class="badge-simple badge-primary">
+                                {{ covenant.name_covenants|default:"غير محدد"}}
+                            </span>
+                        </td>
+                        <td style="border:1px solid #000;">{{ covenant.quantity |default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ covenant.name|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ covenant.date|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ covenantreturn_date.|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ covenant.notes|default:"لا توجد ملاحظات" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <div class="no-data">لا توجد عهد مسجلة</div>
+        {% endif %}
+    </div>
+     </div>
+    <!-- Tutors Section -->
+
+
+<div id="tutors-section" class="section">
+    <div class="section-header">التدريب</div>
+    <div class="section-content">
+        {% if tutors_as_trainer or tutors_as_trainee %}
+        <div style="max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                <thead>
+                    <tr style="position: sticky; top:0; background-color: #000; color: #fff; z-index:2;">
+                        <th style="border:1px solid #000;">المادة</th>
+                        <th style="border:1px solid #000;">المتدرب</th>
+                        <th style="border:1px solid #000;">المدرب</th>
+                        <th style="border:1px solid #000;">تاريخ البداية</th>
+                        <th style="border:1px solid #000;">تاريخ النهاية</th>
+                        <th style="border:1px solid #000;">التقييم</th>
+                        <th style="border:1px solid #000;">الملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tutor in tutors_as_trainer %}
+                    <tr>
+                        <td style="border:1px solid #000;">{{ tutor.subject|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">
+                            {% for p in tutor.people.all %}
+                                <span class="badge-simple badge-primary">{{ p }}</span>{% if not forloop.last %}, {% endif %}
+                            {% empty %} غير محدد {% endfor %}
+                        </td>
+                        <td style="border:1px solid #000;">{{ tutor.person|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.start_date|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.end_date|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.mark|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.notes|default:"لا توجد ملاحظات" }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    {% for tutor in tutors_as_trainee %}
+                    <tr>
+                        <td style="border:1px solid #000;">{{ tutor.subject|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;"><span class="badge-simple badge-primary">{{ person }}</span></td>
+                        <td style="border:1px solid #000;">{{ tutor.person|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.start_date|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.end_date|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.mark|default:"غير محدد" }}</td>
+                        <td style="border:1px solid #000;">{{ tutor.notes|default:"لا توجد ملاحظات" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-data">لا توجد تدريبات مسجلة لهذا الشخص</div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+</div>
+<script>
+    // Initialize Mermaid
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'cardinal'
+        }
+    });
+
+    // Toggle individual section
+    function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const isHidden = section.style.display === 'none';
+            section.style.display = isHidden ? 'block' : 'none';
+
+            // Re-render Mermaid charts when section becomes visible
+            if ((sectionId === 'academic-flowchart' || sectionId === 'progress-timeline' || sectionId === 'cultural-section') && isHidden) {
+                setTimeout(() => {
+                    mermaid.init(undefined, section.querySelectorAll('.mermaid'));
+                }, 100);
+            }
+        }
+    }
+
+    // Toggle all sections
+    function toggleAll() {
+        const sections = document.querySelectorAll('.section');
+        const checkboxes = document.querySelectorAll('.control-item input[type="checkbox"]');
+
+        // Check visibility based on first section
+        const firstSection = sections[0];
+        const isVisible = firstSection.style.display !== 'none';
+
+        sections.forEach(section => {
+            section.style.display = isVisible ? 'none' : 'block';
+        });
+
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = !isVisible;
+        });
+
+        // Re-render Mermaid charts for visible sections
+        if (!isVisible) {
+            sections.forEach(section => {
+                if (section.querySelector('.mermaid')) {
+                    setTimeout(() => {
+                        mermaid.init(undefined, section.querySelectorAll('.mermaid'));
+                    }, 100);
+                }
+            });
+        }
+    }
+
+    // Print report with date
+      function printReport() {
+        // تحديث التاريخ إذا كان في الصفحة
+        const printDateSpan = document.getElementById('print-date');
+        if (printDateSpan) {
+            printDateSpan.textContent = new Date().toLocaleDateString('ar-EG', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        window.print();
+    }
+
+</script>
+
+<script>
+function filterTables() {
+  const year = document.getElementById('search-year').value.trim();
+  const monthInput = document.getElementById('search-month').value.trim().toLowerCase();
+
+  const tables = document.querySelectorAll('#staff-info table');
+  let monthlyMap = {};
+
+  tables.forEach(table => {
+    const tbody = table.querySelector('tbody');
+    const rows = tbody.querySelectorAll('tr');
+    let hasVisibleRow = false;
+
+    rows.forEach((row, index) => {
+      if(index === 0) return;
+      const hijriCell = row.cells[0];
+      if(!hijriCell) return;
+
+      const hijriText = hijriCell.textContent.trim();
+      const [rowMonth, rowYear] = hijriText.split('/');
+
+      const monthMatch = !monthInput || monthInput === 'كل الأشهر' || rowMonth.toLowerCase() === monthInput;
+      const yearMatch = !year || rowYear === year;
+
+      if(monthMatch && yearMatch){
+        row.style.display = '';
+        hasVisibleRow = true;
+        const numeric = parseFloat(row.cells[row.cells.length - 2]?.textContent.trim() || 0);
+        const key = rowYear + '/' + rowMonth;
+        monthlyMap[key] = (monthlyMap[key] || 0) + numeric;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    if(!hasVisibleRow){
+      const colspan = rows[0]?.cells.length || 1;
+      tbody.innerHTML = `
+        <tr>${rows[0].innerHTML}</tr>
+        <tr><td colspan="${colspan}" style="text-align:center;color:black;">لا توجد بيانات لهذا الجانب</td></tr>
+      `;
+    }
+  });
+
+  // تحديث الإجمالي الشهري فقط للسنة والشهر المحددين
+  const tbodyTotal = document.getElementById('monthly-total-body');
+  tbodyTotal.innerHTML = '';
+  let hasMonthlyData = false;
+  for(const key in monthlyMap){
+    const [y, m] = key.split('/');
+    const total = monthlyMap[key];
+    let grade = '';
+    if(total >= 180) grade = 'ممتاز';
+    else if(total >= 160) grade = 'جيد جدًا';
+    else if(total >= 140) grade = 'جيد';
+    else if(total >= 120) grade = 'متوسط';
+    else grade = 'ضعيف';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${y}</td><td>${m}</td><td>${grade}</td><td>${total}</td>`;
+    tbodyTotal.appendChild(tr);
+    hasMonthlyData = true;
+  }
+  if(!hasMonthlyData){
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="4" style="text-align:center;color:red;">لا توجد بيانات</td>`;
+    tbodyTotal.appendChild(tr);
+  }
+}
+
+function resetFilter() {
+  document.getElementById('search-year').value = '';
+  document.getElementById('search-month').value = '';
+  filterTables();
+}
+</script>
+</body>
+{% endblock content %}

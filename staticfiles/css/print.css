@@ -1,0 +1,283 @@
+/* Print Styles for HR Reports */
+@media print {
+    /* إخفاء العناصر غير المطلوبة في الطباعة */
+    .no-print,
+    .navbar,
+    .btn,
+    button,
+    .pagination,
+    .toggle-section,
+    .filter-section {
+        display: none !important;
+    }
+    
+    /* إعدادات عامة للطباعة */
+    body {
+        background: white !important;
+        color: #000 !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* إعدادات الصفحة */
+    @page {
+        margin: 2cm;
+        size: A4;
+    }
+    
+    /* رأسية التقرير */
+    .print-header {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 20px;
+        page-break-after: avoid;
+    }
+    
+    .print-header h1 {
+        font-size: 24px !important;
+        margin-bottom: 10px;
+        color: #333 !important;
+        font-weight: bold;
+    }
+    
+    .print-header h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px;
+        color: #666 !important;
+    }
+    
+    .print-header p {
+        font-size: 12px !important;
+        color: #999 !important;
+    }
+    
+    /* أقسام التقرير */
+    .print-section {
+        page-break-inside: avoid;
+        margin-bottom: 25px;
+    }
+    
+    .print-section h3 {
+        background-color: #f5f5f5 !important;
+        color: #333 !important;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        font-size: 16px !important;
+        font-weight: bold;
+        page-break-after: avoid;
+    }
+    
+    .print-section h5 {
+        font-size: 14px !important;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333 !important;
+    }
+    
+    .print-section h6 {
+        font-size: 12px !important;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #666 !important;
+    }
+    
+    /* الكروت */
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+    }
+    
+    .card-header {
+        background-color: #f8f9fa !important;
+        color: #333 !important;
+        border-bottom: 1px solid #ddd !important;
+        padding: 10px 15px !important;
+    }
+    
+    .card-body {
+        padding: 15px !important;
+    }
+    
+    /* الجداول */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-bottom: 15px;
+        font-size: 11px !important;
+    }
+    
+    table th,
+    table td {
+        border: 1px solid #ddd !important;
+        padding: 6px 8px !important;
+        text-align: right !important;
+        vertical-align: top !important;
+    }
+    
+    table th {
+        background-color: #f8f9fa !important;
+        color: #333 !important;
+        font-weight: bold !important;
+    }
+    
+    /* الصفوف المتناوبة في الجداول */
+    table tbody tr:nth-child(even) {
+        background-color: #f9f9f9 !important;
+    }
+    
+    /* بدون حدود للجداول البسيطة */
+    table.table-borderless th,
+    table.table-borderless td {
+        border: none !important;
+    }
+    
+    /* الشارات والبادجات */
+    .badge {
+        border: 1px solid #333 !important;
+        padding: 2px 6px !important;
+        font-size: 10px !important;
+        color: #333 !important;
+        background-color: white !important;
+    }
+    
+    /* الإحصائيات */
+    .stats-card {
+        border: 1px solid #ddd !important;
+        background-color: #f8f9fa !important;
+        color: #333 !important;
+        margin-bottom: 15px;
+        padding: 10px !important;
+        text-align: center;
+    }
+    
+    .stats-card .number {
+        font-size: 20px !important;
+        font-weight: bold;
+        color: #333 !important;
+    }
+    
+    /* التنبيهات */
+    .alert {
+        border: 1px solid #ddd !important;
+        background-color: #f8f9fa !important;
+        color: #333 !important;
+        padding: 10px !important;
+    }
+    
+    .alert-success {
+        border-color: #28a745 !important;
+        background-color: #d4edda !important;
+    }
+    
+    /* الصور والأيقونات */
+    .fas,
+    .fa {
+        display: none !important;
+    }
+    
+    /* إخفاء المخططات البيانية */
+    .chart-container,
+    canvas {
+        display: none !important;
+    }
+    
+    /* فواصل الصفحات */
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .page-break-avoid {
+        page-break-inside: avoid;
+    }
+    
+    /* النصوص */
+    .text-muted {
+        color: #666 !important;
+    }
+    
+    .text-center {
+        text-align: center !important;
+    }
+    
+    /* الصفوف والأعمدة */
+    .row {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .col-md-6,
+    .col-md-4,
+    .col-md-3,
+    .col-md-12 {
+        display: block !important;
+        width: 100% !important;
+        float: none !important;
+        margin-bottom: 10px;
+    }
+    
+    /* إعدادات خاصة للجداول الطويلة */
+    .table-responsive {
+        overflow: visible !important;
+    }
+    
+    /* تحسين المساحات */
+    .mb-4, .my-4 {
+        margin-bottom: 15px !important;
+    }
+    
+    .mt-4 {
+        margin-top: 15px !important;
+    }
+    
+    .pb-4 {
+        padding-bottom: 15px !important;
+    }
+    
+    .pt-4 {
+        padding-top: 15px !important;
+    }
+    
+    /* تحسين عرض النصوص الطويلة */
+    .text-truncate {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+    }
+    
+    /* إزالة الحواف الدائرية */
+    .rounded,
+    .card,
+    .btn {
+        border-radius: 0 !important;
+    }
+    
+    /* تحسين التباعد */
+    .container {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* عنوان التقرير في كل صفحة */
+    thead {
+        display: table-header-group;
+    }
+    
+    tfoot {
+        display: table-footer-group;
+    }
+    
+    /* منع تقسيم العناصر المهمة */
+    .person-card,
+    .stats-card,
+    table {
+        page-break-inside: avoid;
+    }
+}

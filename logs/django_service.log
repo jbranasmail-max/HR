@@ -1,0 +1,1094 @@
+2025-10-09 03:39:53,940 - INFO - Service starting
+2025-10-09 03:40:04,877 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 03:40:04,915 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 03:52:49,821 - INFO - Service starting
+2025-10-09 03:53:07,179 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 03:53:07,242 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 03:58:12,249 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:12,249 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:12,250 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:12,324 - WARNING - Not Found: /favicon.ico
+2025-10-09 03:58:18,728 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:18,748 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:18,761 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:19,258 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:19,278 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:19,297 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:19,576 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:19,582 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:19,597 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:19,737 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:19,754 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:19,771 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:26,127 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:26,158 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:26,161 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:55,529 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:55,542 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:55,557 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:56,152 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:56,170 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:56,185 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:56,375 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:56,393 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:56,410 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:58:56,581 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 03:58:56,585 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 03:58:56,602 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 03:59:44,793 - INFO - Service stop requested
+2025-10-09 03:59:44,793 - INFO - Service stopped
+2025-10-09 04:03:52,590 - INFO - Service starting
+2025-10-09 04:03:53,902 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 04:03:53,916 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 04:04:14,538 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:04:14,539 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:04:14,538 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:04:14,577 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:04:14,581 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:04:14,598 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:04:14,621 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:04:14,637 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:04:36,792 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:04:36,793 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:04:36,796 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:04:36,810 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:04:36,834 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:04:36,856 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:04:36,872 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:04:36,890 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:04:36,907 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:04:36,978 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:04:36,997 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:04:37,011 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:04:37,067 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:04:37,094 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:04:37,123 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:04:37,151 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:04:46,264 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:04:46,278 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:04:46,296 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:04:46,326 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:04:46,342 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:04:46,356 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:04:46,371 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:04:46,395 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:04:46,413 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:04:46,434 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:04:46,454 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:04:46,472 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:04:46,489 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:04:46,519 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:04:46,546 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:04:46,575 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:05:03,916 - WARNING - Not Found: /static/admin/css/base_tailwind.css
+2025-10-09 04:05:03,938 - WARNING - Not Found: /static/admin/css/calendar.css
+2025-10-09 04:05:03,958 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:05:03,973 - WARNING - Not Found: /static/admin/css/customized_tailwind.css
+2025-10-09 04:05:03,995 - WARNING - Not Found: /static/admin/fonts/fontawesome-free-6.6.0-web/css/all.min.css
+2025-10-09 04:05:04,006 - WARNING - Not Found: /static/admin/js/jquery.init.js
+2025-10-09 04:05:04,025 - WARNING - Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2025-10-09 04:05:04,047 - WARNING - Not Found: /static/admin/js/theme-change.js
+2025-10-09 04:05:04,067 - WARNING - Not Found: /static/admin/js/admin/dashboard.js
+2025-10-09 04:05:04,081 - WARNING - Not Found: /static/admin/js/SelectBox.js
+2025-10-09 04:05:04,428 - WARNING - Not Found: /static/logo.png
+2025-10-09 04:05:06,532 - WARNING - Not Found: /static/admin/fonts/fontawesome-free-6.6.0-web/css/all.min.css
+2025-10-09 04:05:06,548 - WARNING - Not Found: /static/admin/css/base_tailwind.css
+2025-10-09 04:05:06,562 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:05:06,579 - WARNING - Not Found: /static/admin/css/customized_tailwind.css
+2025-10-09 04:05:06,596 - WARNING - Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2025-10-09 04:05:06,611 - WARNING - Not Found: /static/admin/css/calendar.css
+2025-10-09 04:05:06,638 - WARNING - Not Found: /static/admin/js/jquery.init.js
+2025-10-09 04:05:06,653 - WARNING - Not Found: /static/admin/js/theme-change.js
+2025-10-09 04:05:06,673 - WARNING - Not Found: /static/admin/js/SelectBox.js
+2025-10-09 04:05:06,694 - WARNING - Not Found: /static/admin/js/admin/dashboard.js
+2025-10-09 04:05:06,711 - WARNING - Not Found: /static/logo.png
+2025-10-09 04:05:39,920 - WARNING - Forbidden (CSRF token from POST incorrect.): /
+2025-10-09 04:05:43,513 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:05:43,525 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:05:43,538 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:05:57,238 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:05:57,253 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:05:57,273 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:05:57,287 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:05:57,316 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:05:57,352 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:05:57,367 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:05:57,376 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:05:57,380 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:05:57,420 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:05:57,456 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:05:57,472 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:05:57,490 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:05:57,512 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:05:57,533 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:05:57,562 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:07:15,944 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:15,955 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:15,968 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:20,175 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:20,198 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:20,204 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:20,620 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:20,625 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:20,641 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:20,817 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:20,836 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:20,850 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:20,999 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:21,005 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:21,018 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:43,319 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:43,333 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:43,351 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:48,910 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:48,928 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:48,945 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:49,114 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:49,130 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:49,147 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:49,245 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:49,274 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:49,278 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:07:49,429 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:07:49,446 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:07:49,461 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:34,296 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:34,310 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:34,327 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:34,856 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:34,872 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:34,876 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,072 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,089 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,106 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,229 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,243 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,260 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,363 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,378 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,395 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,559 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,573 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,589 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,715 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,720 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:35,738 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,911 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:35,915 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:35,929 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:36,101 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:36,113 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:36,121 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:36,248 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:36,265 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:36,282 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:36,441 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:36,445 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:36,463 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:36,611 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:36,628 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:36,645 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:53,853 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:53,884 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:53,887 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:54,369 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:54,377 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:54,395 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:54,573 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:54,588 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:54,603 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:54,720 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:54,744 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:54,754 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:54,860 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:54,877 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:54,894 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:09:55,057 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:09:55,077 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:09:55,094 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:10:48,346 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:10:48,373 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:10:48,376 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:10:48,862 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:10:48,881 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:10:48,895 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:10:49,078 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:10:49,089 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:10:49,107 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:10:49,227 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:10:49,231 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:10:49,245 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:11:23,580 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:11:23,611 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:11:23,612 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:11:24,218 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:11:24,218 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:11:24,235 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:11:45,821 - INFO - Service stop requested
+2025-10-09 04:11:45,821 - INFO - Service stopped
+2025-10-09 04:12:08,393 - INFO - Service starting
+2025-10-09 04:12:09,301 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 04:12:09,314 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 04:12:11,808 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:12:11,810 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:12:11,830 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:12:11,870 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:12:11,889 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:12:11,905 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:12:11,923 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:12:11,954 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:12:11,963 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:12:11,981 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:12:12,001 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:12:12,017 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:12:12,039 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:12:12,059 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:12:12,080 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:12:12,100 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:12:12,121 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:12:12,153 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:12:12,170 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:13:23,444 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:13:23,471 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:13:23,494 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:13:23,508 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:13:23,527 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:13:23,541 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:13:23,560 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:13:23,593 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:13:23,596 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:13:23,632 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:13:23,659 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:13:23,679 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:13:23,696 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:13:23,727 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:13:23,753 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:13:23,779 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:13:24,619 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:13:24,620 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:13:24,633 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:13:24,778 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:13:24,790 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:13:24,805 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:13:24,980 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:13:24,996 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:13:25,008 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:13:25,128 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:13:25,153 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:13:25,161 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:13:31,599 - INFO - Service stop requested
+2025-10-09 04:13:31,599 - INFO - Service stopped
+2025-10-09 04:15:13,777 - INFO - Service starting
+2025-10-09 04:15:14,896 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 04:15:14,930 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 04:15:16,443 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:16,444 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:16,443 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:17,088 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:17,101 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:17,114 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:17,610 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:17,629 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:17,643 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:17,779 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:17,793 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:17,811 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:17,974 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:17,986 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:17,998 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:18,133 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:18,133 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:18,151 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:18,333 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:18,337 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:15:18,353 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:18,470 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:15:18,487 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:15:18,504 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:05,953 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:05,974 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:05,985 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:08,779 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:16:08,802 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:16:08,828 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:16:08,844 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:16:08,857 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:16:08,873 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:16:08,893 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:16:08,912 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:16:08,930 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:08,967 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:16:08,986 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:16:09,001 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:16:09,021 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:16:09,044 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:16:09,071 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:16:09,098 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:16:44,358 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:44,377 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:44,391 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:44,860 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:44,877 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:44,891 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:45,158 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:45,174 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:45,191 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:45,387 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:45,406 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:45,420 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:45,583 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:45,611 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:45,616 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:45,752 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:45,766 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:16:45,776 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:46,128 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:16:46,158 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:16:46,162 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:10,252 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:17:10,273 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:17:10,289 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:10,711 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:10,725 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 04:17:10,730 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:17:11,628 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:17:11,649 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:17:11,669 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:17:11,688 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:17:11,705 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:11,729 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:11,742 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:11,758 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:11,775 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:11,812 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:11,837 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:17:11,852 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:17:11,869 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:11,891 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:11,912 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:11,933 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,026 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:17:12,042 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:17:12,059 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:12,079 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:17:12,095 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:17:12,110 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:12,135 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:12,150 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,169 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:12,197 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:17:12,211 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:12,228 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:17:12,248 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,269 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:12,289 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:12,310 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,426 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:17:12,432 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:17:12,450 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:17:12,472 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:17:12,495 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:12,504 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:12,542 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,525 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:12,560 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:12,583 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:17:12,605 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:12,617 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:17:12,636 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,656 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:12,677 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:12,698 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:12,984 - WARNING - Not Found: /static/bootstrap/css/bootstrap.rtl.min.css
+2025-10-09 04:17:13,000 - WARNING - Not Found: /static/fontawesome/css/all.min.css
+2025-10-09 04:17:13,023 - WARNING - Not Found: /static/js/chart.min.js
+2025-10-09 04:17:13,037 - WARNING - Not Found: /static/bootstrap/js/bootstrap.bundle.min.js
+2025-10-09 04:17:13,057 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:13,071 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:13,094 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:13,113 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:13,127 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:13,149 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js
+2025-10-09 04:17:13,173 - WARNING - Not Found: /static/fonts/NotoSansArabic-Regular.ttf
+2025-10-09 04:17:13,187 - WARNING - Not Found: /static/fonts/NotoSansArabic-Bold.ttf
+2025-10-09 04:17:13,205 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:13,226 - WARNING - Not Found: /static/js/html2canvas.min.js
+2025-10-09 04:17:13,247 - WARNING - Not Found: /static/js/jspdf.umd.min.js
+2025-10-09 04:17:13,268 - WARNING - Not Found: /static/js/xlsx.full.min.js
+2025-10-09 04:17:26,782 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 04:17:26,799 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 04:17:26,815 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 14:36:35,985 - INFO - Service starting
+2025-10-09 14:36:47,902 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-09 14:36:47,949 - INFO - Serving on http://0.0.0.0:8000
+2025-10-09 14:36:59,327 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 14:36:59,328 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 14:36:59,350 - WARNING - Not Found: /static/css/bootstrap.min.css
+2025-10-09 14:36:59,363 - WARNING - Not Found: /static/css/custom-admin.css
+2025-10-09 14:36:59,378 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 14:36:59,393 - WARNING - Not Found: /static/js/bootstrap.bundle.min.js
+2025-10-09 14:36:59,408 - WARNING - Not Found: /favicon.ico
+2025-10-09 14:36:59,428 - WARNING - Not Found: /favicon.ico
+2025-10-10 20:27:56,410 - INFO - Service starting
+2025-10-10 20:28:08,598 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-10 20:28:08,643 - INFO - Serving on http://0.0.0.0:8000
+2025-10-10 20:29:16,872 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:29:17,070 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:05,962 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:06,116 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:06,739 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:06,899 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:07,379 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:07,555 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:08,003 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:30:08,180 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:54,048 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:54,208 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:54,709 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:54,886 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:55,073 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:55,245 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:55,483 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:55,665 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:55,925 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:56,096 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:57,627 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:31:57,769 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:24,975 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:25,131 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:25,529 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:25,680 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:25,954 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,097 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,118 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,227 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,256 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,332 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,371 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:26,520 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:33,353 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:38:33,515 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:44:48,017 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:44:48,174 - ERROR - Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.199.5:8000'. You may need to add '192.168.199.5' to ALLOWED_HOSTS.
+2025-10-10 20:45:22,965 - WARNING - Forbidden (CSRF cookie not set.): /
+2025-10-10 20:47:17,278 - INFO - Service stop requested
+2025-10-10 20:47:18,074 - INFO - Service stopped
+2025-10-10 20:58:14,894 - INFO - Service starting
+2025-10-10 20:58:25,467 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-10 20:58:25,519 - INFO - Serving on http://0.0.0.0:8000
+2025-10-10 20:58:37,102 - WARNING - Not Found: /favicon.ico
+2025-10-10 20:58:39,185 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 20:59:02,115 - WARNING - Range Not Satisfiable: /static/admin/css/base_tailwind.css
+2025-10-10 20:59:02,123 - WARNING - Range Not Satisfiable: /static/admin/css/customized_tailwind.css
+2025-10-10 20:59:02,137 - WARNING - Range Not Satisfiable: /static/admin/fonts/fontawesome-free-6.6.0-web/css/all.min.css
+2025-10-10 21:00:04,539 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:01:29,086 - WARNING - Not Found: /favicon.ico
+2025-10-10 21:02:22,962 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:02:30,719 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:03:15,954 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:03:37,474 - WARNING - Forbidden (Permission denied): /admin/admin/logentry/
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 2021, in changelist_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2025-10-10 21:04:32,244 - WARNING - Forbidden (Permission denied): /admin/admin/logentry/120/change/
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1870, in _changeform_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2025-10-10 21:06:35,773 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:06:41,263 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:06:44,106 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:06:44,121 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:06:44,189 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:06:44,213 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:07:13,969 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:07:14,929 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:07:14,954 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:07:15,104 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:07:15,114 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:07:21,132 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:07:21,166 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:07:21,216 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:07:21,235 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:07:34,679 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:14,727 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:14,758 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:14,812 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:14,833 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:16,766 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:16,792 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:16,852 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:16,870 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:17,817 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:17,870 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:17,944 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:17,963 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:18,519 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:18,554 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:18,672 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:18,679 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:19,173 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:19,206 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:19,329 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:19,350 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:19,805 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:19,828 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:20,041 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:20,050 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:22,253 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:22,259 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:22,398 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:22,406 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:27,176 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:27,188 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:27,301 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:27,335 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:32,433 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:32,459 - WARNING - Not Found: /static/js/mermaid.min.js
+2025-10-10 21:08:32,506 - WARNING - Not Found: /static/fontawesome-free-7.0.1-web/css/all.min.css
+2025-10-10 21:08:32,536 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:38,485 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:39,923 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:50,231 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:51,713 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:53,862 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:08:55,407 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:09:00,123 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:09:19,170 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:09:20,168 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:14:20,544 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-10 21:14:30,215 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:15:57,873 - WARNING - Not Found: /favicon.ico
+2025-10-11 16:16:24,287 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:28:40,031 - WARNING - Forbidden (CSRF cookie not set.): /
+2025-10-11 16:33:45,392 - WARNING - Forbidden (CSRF cookie not set.): /
+2025-10-11 16:37:06,904 - WARNING - Not Found: /favicon.ico
+2025-10-11 16:37:55,527 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:38:17,900 - WARNING - Not Found: /favicon.ico
+2025-10-11 16:39:03,570 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:39:11,735 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:39:14,500 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-11 16:40:33,057 - WARNING - Not Found: /favicon.ico
+2025-10-11 16:40:48,605 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 16:24:36,010 - INFO - Service starting
+2025-10-12 16:24:54,005 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-12 16:24:54,074 - INFO - Serving on http://0.0.0.0:8000
+2025-10-12 16:24:56,770 - WARNING - Not Found: /favicon.ico
+2025-10-12 16:24:59,744 - WARNING - Not Found: /favicon.ico
+2025-10-12 16:26:22,649 - WARNING - Not Found: /favicon.ico
+2025-10-12 16:30:15,314 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 16:35:09,868 - WARNING - Not Found: /favicon.ico
+2025-10-12 16:35:42,657 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 19:56:28,960 - WARNING - Not Found: /favicon.ico
+2025-10-12 19:56:50,443 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 20:18:25,647 - WARNING - Not Found: /favicon.ico
+2025-10-12 20:18:48,199 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 20:24:27,298 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 20:24:31,013 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 20:24:38,098 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 20:31:25,076 - WARNING - Not Found: /favicon.ico
+2025-10-12 20:31:49,673 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 23:07:20,771 - WARNING - Not Found: /favicon.ico
+2025-10-12 23:08:01,259 - WARNING - Not Found: /favicon.ico
+2025-10-12 23:11:08,647 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-12 23:22:48,670 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:01:28,435 - INFO - Service starting
+2025-10-14 17:01:46,354 - INFO - Starting Waitress server on 0.0.0.0:8000
+2025-10-14 17:01:46,434 - INFO - Serving on http://0.0.0.0:8000
+2025-10-14 17:01:48,561 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:02:05,666 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:03:37,504 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:04:29,240 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:05:31,740 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:05:49,380 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:05:50,103 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:06:08,228 - WARNING - Forbidden (Permission denied): /admin/auth/user/2/change/
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\options.py", line 1870, in _changeform_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2025-10-14 17:11:57,772 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:12:12,200 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:17:47,033 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:18:00,190 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:18:59,398 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:19:02,915 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:19:05,184 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:19:34,910 - WARNING - Not Found: /static/js/html2pdf.bundle.min.js.map
+2025-10-14 17:19:34,924 - WARNING - Not Found: /static/js/chart.umd.js.map
+2025-10-14 17:19:34,941 - WARNING - Not Found: /static/js/jspdf.umd.min.js.map
+2025-10-14 17:19:41,135 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:19:44,048 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:22:36,339 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:29:27,435 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:29:38,669 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:30:50,671 - WARNING - Forbidden (CSRF token from POST incorrect.): /
+2025-10-14 17:36:27,776 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:36:45,069 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:41:07,845 - WARNING - Not Found: /http://192.168.10.1:8000/
+2025-10-14 17:41:07,963 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:41:31,729 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 17:42:44,848 - WARNING - Not Found: /favicon.ico
+2025-10-14 17:42:58,703 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 18:12:13,542 - WARNING - Not Found: /favicon.ico
+2025-10-14 18:12:33,924 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 22:08:53,188 - WARNING - Not Found: /favicon.ico
+2025-10-14 22:09:10,723 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2025-10-14 22:09:16,913 - WARNING - Not Found: /static/fontawesome/webfonts/fa-solid-900.woff2
+2026-02-07 23:07:02,105 - INFO - Service starting

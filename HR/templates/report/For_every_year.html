@@ -1,0 +1,186 @@
+{% extends "reports/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+  <!-- أدوات التحكم: السنة + الأزرار -->
+  <div style="margin-bottom: 20px" class="no-print">
+    <label>السنة الهجرية:
+      <input type="number" id="search-year" style="width: 120px; height: 30px" />
+    </label>
+    <button onclick="filterCharts()" style="width:80px">بحث</button>
+    <button onclick="resetCharts()" style="width:100px">عرض الكل</button>
+  </div>
+
+  <!-- العنوان والمخططات -->
+  <h2 class="mb-4">المخططات الثقافيه لكل سنة</h2>
+  <div id="chartsContainer"></div>
+</div>
+<style>
+@media print {
+    .no-print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+</style>
+<script src="{% static 'js/chart.umd.min.js' %}"></script>
+<script src="{% static 'js/chartjs-plugin-datalabels.min.js' %}"></script>
+
+<script>
+const chartsContainer = document.getElementById("chartsContainer");
+
+const alabadi_data = {{ alabadi_data|safe }};
+const cultural_data = {{ cultural_data|safe }};
+const behavioral_data = {{ behavioral_data|safe }};
+
+// تحويل الأرقام الغربية للعربية الشرقية
+function toArabicNumber(n){
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+// ✅ أسماء الأشهر الهجرية بالنص
+const HIJRI_MONTH_NAMES = {
+  1:"محرم",2:"صفر",3:"ربيع الأول",4:"ربيع الآخر",
+  5:"جمادى الأولى",6:"جمادى الآخرة",7:"رجب",8:"شعبان",
+  9:"رمضان",10:"شوال",11:"ذو القعدة",12:"ذو الحجة"
+};
+
+function renderCharts(selectedYear=null){
+  chartsContainer.innerHTML = "";
+
+  // جمع كل السنوات الموجودة فعلاً
+  let years = new Set();
+  [alabadi_data, cultural_data, behavioral_data].forEach(data=>{
+    Object.keys(data).forEach(k=>{
+      const [y,_] = k.split("-");
+      if(!selectedYear || selectedYear == y) years.add(y);
+    });
+  });
+  years = Array.from(years).sort((a,b)=>a-b); // الأقدم فالأحدث
+
+  if(years.length===0){
+    const p = document.createElement("p");
+    p.classList.add("text-danger");
+    p.textContent = "لا توجد بيانات لهذه السنة";
+    chartsContainer.appendChild(p);
+    return;
+  }
+
+  years.forEach(year=>{
+    const allKeys = new Set([
+      ...Object.keys(alabadi_data).filter(k=>k.startsWith(year+"-")),
+      ...Object.keys(cultural_data).filter(k=>k.startsWith(year+"-")),
+      ...Object.keys(behavioral_data).filter(k=>k.startsWith(year+"-"))
+    ]);
+
+    const sortedKeys = Array.from(allKeys).sort((a,b)=>{
+      const [y1,m1] = a.split("-").map(Number);
+      const [y2,m2] = b.split("-").map(Number);
+      return y1===y2 ? m1 - m2 : y1 - y2;
+    });
+
+    if(sortedKeys.length === 0) return;
+
+    const yearContainer = document.createElement("div");
+    yearContainer.style.border = "5px solid #181818ff";
+    yearContainer.style.borderRadius = "10px";
+    yearContainer.style.padding = "15px";
+    yearContainer.style.marginBottom = "25px";
+    chartsContainer.appendChild(yearContainer);
+
+    const yearTitle = document.createElement("h3");
+    yearTitle.textContent = `السنة الهجرية: ${year}`;
+    yearTitle.style.marginTop = "0";
+    yearContainer.appendChild(yearTitle);
+
+    const chartDiv = document.createElement("div");
+    chartDiv.classList.add("card","mb-4","p-3","shadow-sm");
+    yearContainer.appendChild(chartDiv);
+
+    const canvas = document.createElement("canvas");
+    canvas.height = 600;
+    chartDiv.appendChild(canvas);
+
+    const labels = [];
+    const monthlyValues = [];
+
+    sortedKeys.forEach(key=>{
+      const [y,m] = key.split("-").map(Number);
+      const total = (alabadi_data[key] || 0) + (cultural_data[key] || 0) + (behavioral_data[key] || 0);
+      if(total > 0){
+        labels.push(HIJRI_MONTH_NAMES[m] || `شهر ${toArabicNumber(m)}`);
+        monthlyValues.push(total);
+      }
+    });
+
+    if(monthlyValues.length === 0){
+      const p = document.createElement("p");
+      p.classList.add("text-danger");
+      p.textContent = "لا توجد بيانات لهذه السنة";
+      chartDiv.appendChild(p);
+      return;
+    }
+
+    new Chart(canvas, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "مجموع الجوانب الثلاثة",
+          data: monthlyValues,
+          borderColor: "black",
+          backgroundColor: "rgba(54,162,235,0.4)",
+          tension: 0.3,
+          fill: false,
+          pointRadius: 6,
+          pointBackgroundColor: "black"
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          datalabels: {
+            display: true,
+            color: "black",
+            anchor: "center",
+            align: "top",
+            font: { size: 12, weight: "bold" },
+            formatter: value => toArabicNumber(value)
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 200,
+            grid: { display: false },
+            ticks: {
+              callback: val => toArabicNumber(val)
+            }
+          },
+          x: { 
+            grid: { display: false } 
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  });
+}
+
+renderCharts();
+
+function filterCharts(){
+  const year = document.getElementById("search-year").value;
+  if(year) renderCharts(year);
+}
+
+function resetCharts(){
+  document.getElementById("search-year").value="";
+  renderCharts();
+}
+</script>
+
+{% endblock %}

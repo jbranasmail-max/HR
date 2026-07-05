@@ -1,0 +1,270 @@
+{% extends 'reports/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+        <!-- رسائل النظام -->
+        {% if messages %}
+        <div class="row mt-3">
+            <div class="col-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- رأس الصفحة -->
+        <div class="header mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">مدير المهام</h1>
+                <div>
+                    <span class="me-3">{{ total_tasks }} مهام ({{ completed_tasks }} مكتمل)</span>
+                    <span>{{ overdue_tasks }} متأخر</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- خيارات العرض -->
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">خيارات العرض</h5>
+            </div>
+            <div class="card-body">
+                <form method="get" action="">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="show_overdue" id="showOverdue" 
+                                       {% if show_overdue %}checked{% endif %}>
+                                <label class="form-check-label" for="showOverdue">
+                                    إظهار المتأخرة فقط
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sortBy" class="form-label">ترتيب حسب:</label>
+                            <select class="form-select" id="sortBy" name="sort_by">
+                                <option value="ذكي" {% if sort_by == 'ذكي' %}selected{% endif %}>ترتيب ذكي (الأهم أولاً)</option>
+                                <option value="الوقت" {% if sort_by == 'الوقت' %}selected{% endif %}>الوقت (الأقرب أولاً)</option>
+                                <option value="النوع" {% if sort_by == 'النوع' %}selected{% endif %}>النوع</option>
+                                <option value="الحالة" {% if sort_by == 'الحالة' %}selected{% endif %}>الحالة</option>
+                                <option value="التاريخ" {% if sort_by == 'التاريخ' %}selected{% endif %}>التاريخ (الأحدث أولاً)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-secondary w-100">
+                                <i class="bi bi-funnel me-1"></i> تطبيق الفلتر
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- قائمة المهام -->
+        <div class="card">
+                        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:5px;">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">قائمة المهام</h5>
+            </div>
+            <div class="card-body p-0">
+                {% if tasks %}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" class="data-table"  border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">#</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2;  color:white">المهمة</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">المكلف</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">المتابع</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">النوع</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">الأولوية</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">الحالة</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">التاريخ</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">الوقت</th>
+                                <th scope="col" style="position:sticky; top:0; background-color:black; z-index:2; color:white">النتيجة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                            <tr class="{% if task.is_overdue %}table-danger{% elif task.status == 'تم' %}table-success{% endif %}">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ task.name }}</td>
+                                <td>{{ task.delegate|default:'-' }}</td>
+                                <td>{{ task.follower|default:'-' }}</td>
+                                <td>{{ task.type|default:'-' }}</td>
+                                <td>{{ task.priority|default:'-' }}</td>
+                                <td>{{ task.status|default:'-' }}</td>
+                            
+                                <td>{{ task.date|date:"Y-m-d" }}</td>
+                                <td>{{ task.time}}</td>
+                                <td>{{ task.result|default:'-' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="bi bi-inbox fs-1 text-muted"></i>
+                    <p class="mt-3 text-muted">لا توجد مهام لعرضها</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --primary-color: #2980b9;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --background-color: #f8f9fa;
+            --overdue-color: #ffebef;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+            font-weight: 600;
+        }
+
+        .btn {
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .badge {
+            font-size: 0.85em;
+            padding: 0.35em 0.65em;
+        }
+
+        .form-control, .form-select {
+            border-radius: 6px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #21618c;
+            border-color: #21618c;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+            border-color: #229954';
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            border-color: var(--warning-color);
+        }
+
+        .btn-warning:hover {
+            background-color: #d68910;
+            border-color: #d68910';
+        }
+
+        .table-danger {
+            --bs-table-bg: var(--overdue-color);
+        }
+
+        .table-success {
+            --bs-table-bg: #e8f5e9;
+        }
+
+        .table-warning {
+            --bs-table-bg: #fff9e1;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        /* تنسيق عمود الترقيم */
+        .table tbody td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+            width: 50px;
+        }
+
+        .table thead th:first-child {
+            text-align: center;
+            width: 50px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحديث الفلاتر تلقائيًا عند تغيير الخيارات
+            const showOverdueCheckbox = document.getElementById('showOverdue');
+            const sortBySelect = document.getElementById('sortBy');
+            
+            if (showOverdueCheckbox && sortBySelect) {
+                showOverdueCheckbox.addEventListener('change', function() {
+                    document.querySelector('form[method="get"]').submit();
+                });
+                
+                sortBySelect.addEventListener('change', function() {
+                    document.querySelector('form[method="get"]').submit();
+                });
+            }
+        });
+    </script>
+{% endblock %}

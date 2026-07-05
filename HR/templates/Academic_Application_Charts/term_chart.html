@@ -1,0 +1,185 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/chart.min.js' %}"></script>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <!-- السجل الأكاديمي للطالب -->
+    
+    <!-- عنوان المخططات -->
+    <div class="student-card" style="background: white; color: black; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 40px; text-align:center;">
+        <h2 style="margin: 0; font-weight: 700;" > مخططات التقدم الأكاديمي لكل ترم للطالب :<br><p>{{ student.person.name.arabic_full_name }}</p></h2>
+    </div>
+
+    <!-- المخططات لكل ترم -->
+    <div id="terms-container">
+        <!-- المخططات سيتم إضافتها هنا ديناميكيًا -->
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const studentId = "{{ student.id }}";
+    const charts = [];
+
+    function getGradeInfo(value) {
+        if (value >= 90) return { text: 'ممتاز', color: 'green' };
+        if (value >= 80) return { text: 'جيد جدًا', color: '#0d6efd' };
+        if (value >= 65) return { text: 'جيد', color: '#ffc107' };
+        if (value >= 50) return { text: 'مقبول', color: 'orange' };
+        return { text: 'ضعيف', color: 'red' };
+    }
+    function formatAvg(value) {
+    const num = Number(value);
+    return Number.isInteger(num) ? num : num.toString().replace(/\.?0+$/, '');
+}
+
+    function fetchDataAndRenderCharts() {
+        fetch(`/api/term-chart-data/${studentId}/`)
+            .then(response => response.json())
+            .then(data => {
+                const termList = data.term_list;
+
+                const YEAR_ORDER = ["الأولى", "الثانية", "الثالثة", "الرابعة"];
+                const SEM_ORDER = ["الأول", "الثاني"];
+
+                const container = document.getElementById('terms-container');
+                container.innerHTML = '';
+                charts.forEach(c => c.destroy());
+                charts.length = 0;
+
+                if (!termList || termList.length === 0) {
+                    container.innerHTML = `
+                        <div class="student-card" style="background-color: #f8d7da; color: #721c24; padding: 25px; border-radius: 12px; text-align: center;">
+                            <h3>لم يتم إدخال أي مادة بعد.</h3>
+                        </div>
+                    `;
+                    return;
+                }
+
+                termList.sort((a, b) => {
+                    let yearA = YEAR_ORDER.indexOf(a.display_name.split(" ")[1]);
+                    let yearB = YEAR_ORDER.indexOf(b.display_name.split(" ")[1]);
+                    if (yearA !== yearB) return yearA - yearB;
+
+                    let semA = SEM_ORDER.indexOf(a.display_name.split(" ")[4]);
+                    let semB = SEM_ORDER.indexOf(b.display_name.split(" ")[4]);
+                    return semA - semB;
+                });
+
+                termList.forEach((term, index) => {
+                    if (!term.grades || term.grades.length === 0) {
+                        const msgDiv = document.createElement('div');
+                        msgDiv.className = 'student-card';
+                        msgDiv.style = "background-color: #fff3cd; color: #856404; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px;";
+                        msgDiv.innerHTML = `<p>السنة ${term.display_name.split(" ")[1]} - الترم ${term.display_name.split(" ")[4]}: لم يتم إدخال أي مادة</p>`;
+                        container.appendChild(msgDiv);
+                        return;
+                    }
+
+                    const termCard = document.createElement('div');
+                    termCard.className = 'term-card';
+                    termCard.style = "background-color: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); padding: 25px; margin-bottom: 40px; position: relative;";
+
+                    // تحويل جميع الدرجات لأعداد صحيحة
+                    
+                   
+                    const roundedGrades = term.grades.map(g => Math.round(g));
+                     const pointColors = roundedGrades.map(g => getGradeInfo(g).color);
+                    const overallInfo = getGradeInfo(Math.round(Number(term.avg)));
+
+                     termCard.innerHTML = `
+                        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-bottom: 15px; text-align: center;">
+                            <p style="font-weight: 600; color: #2c3e50; margin: 0;">${term.display_name}</p>
+                         <p style="font-weight: 500; color: #2c3e50; margin: 0;">المعدل: ${formatAvg(term.avg)} %</p>
+
+                            <p style="font-weight: 500; color: black; margin: 0;">التقدير: ${overallInfo.text}</p>
+                        </div>
+                        <div style="width: 80%; height: 350px; margin: 0 auto;">
+                            <canvas id="chart-${index+1}"></canvas>
+                        </div>
+                    `;
+                    container.appendChild(termCard);
+
+                    const ctx = document.getElementById(`chart-${index+1}`).getContext('2d');
+
+                    // Plugin لعرض الدرجة والتقدير مباشرة فوق كل نقطة
+                    const showLabelsPlugin = {
+                        id: 'showLabelsPlugin',
+                        afterDatasetsDraw(chart) {
+                            const { ctx } = chart;
+                            chart.data.datasets.forEach((dataset, i) => {
+                                const meta = chart.getDatasetMeta(i);
+                                meta.data.forEach((point, idx) => {
+                                    const value = dataset.data[idx];
+                                    const info = getGradeInfo(Math.round(value));
+                                    ctx.save();
+                                    ctx.font = '12px Arial';
+                                    ctx.fillStyle = info.color;
+                                    ctx.textAlign = 'center';
+                                   let textY = point.y - 10;
+if (point.y - 10 < 10) textY = point.y + 15; // إذا أصبح خارج الأعلى، نضعه تحت النقطة
+ctx.fillText(`${Math.round(value)}% (${info.text})`, point.x, textY);
+
+                                    ctx.restore();
+                                });
+                            });
+                        }
+                    };
+
+                    const chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: term.labels,
+                            datasets: [{
+                                data: roundedGrades,
+                                borderColor: 'rgba(27, 26, 27, 1)',
+                                borderWidth: 2,
+                                pointBackgroundColor: pointColors,
+                                pointRadius: 5,
+                                fill: 'origin',
+                                backgroundColor: 'white',
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                y: { beginAtZero: true, max: 100, grid: { display: false }, ticks: { font: { size: 14, weight: 'bold', family: 'Arial' }, color: '#000' } },
+                                x: { grid: { display: false }, ticks: { font: { size: 14, weight: 'bold', family: 'Arial' }, color: '#000', maxRotation: 45, minRotation: 0 } }
+                            }
+                        },
+                        plugins: [showLabelsPlugin]
+                    });
+
+                    charts.push(chart);
+                });
+            });
+    }
+
+    fetchDataAndRenderCharts();
+});
+</script>
+
+<style>
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .student-card { padding: 20px 15px; }
+    .term-card { padding: 20px 15px; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+    h2 { font-size: 1.3rem; text-align: center; }
+    h3 { font-size: 1.1rem; }
+    .student-card p, .term-card p { font-size: 0.9rem; }
+}
+</style>
+
+{% endblock %}

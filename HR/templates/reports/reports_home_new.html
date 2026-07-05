@@ -1,0 +1,946 @@
+{% extends 'reports/base.html' %}
+
+{% block title %}نظام إدارة الموارد البشرية - التقارير{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: #f8f9fa;
+        font-family: 'Noto Sans Arabic', sans-serif;
+    }
+    
+    .main-header {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .company-info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .company-name {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .dept-name {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-bottom: 10px;
+    }
+    
+    .system-title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        border-top: 2px solid rgba(255,255,255,0.3);
+        padding-top: 20px;
+    }
+    
+    .stats-section {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+    
+    .stats-bar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .stat-item {
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+        padding: 8px 15px;
+        border-right: 1px solid #ddd;
+    }
+    
+    .stat-item:last-child {
+        border-right: none;
+    }
+    
+    .stat-item strong {
+        font-size: 18px;
+        font-weight: 700;
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 2px;
+    }
+    
+    .search-section {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .search-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .form-control, .form-select {
+        border: 2px solid #ecf0f1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+    
+    .btn-search {
+        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-search:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        color: white;
+    }
+    
+    .employees-section {
+        background: white;
+        border: 1px solid #ddd;
+        overflow: hidden;
+    }
+    
+    .employees-header {
+        background: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 20px;
+    }
+    
+    .employees-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 0;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .employee-count {
+        background: #e9ecef;
+        color: #495057;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    .table-wrapper {
+    overflow-x: auto;
+    max-height: 600px; /* يمكنك تغيير الارتفاع لو تحب */
+    position: relative;
+}
+
+/* اجعل عناوين الأعمدة ثابتة */
+.employees-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #343a40; /* نفس لون الخلفية للهيدر */
+    color: white;
+}
+
+    
+    .employees-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        font-size: 14px;
+    }
+    
+    .employees-table thead {
+        background: #343a40;
+    }
+    
+    .employees-table th {
+        color: white;
+        padding: 12px 10px;
+        text-align: right;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1px solid #495057;
+        white-space: nowrap;
+    }
+    
+    .employees-table td {
+        padding: 10px;
+        text-align: right;
+        border: 1px solid #dee2e6;
+        vertical-align: middle;
+        font-size: 13px;
+    }
+    
+    .employees-table tbody tr {
+        cursor: pointer;
+    }
+    
+    .employees-table tbody tr:hover {
+        background: #e9ecef;
+    }
+    
+    .employees-table tbody tr:nth-child(even) {
+        background: #f8f9fa;
+    }
+    
+    .employees-table tbody tr:nth-child(even):hover {
+        background: #e9ecef;
+    }
+    
+    .employee-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #6c757d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    .employee-info {
+        display: flex;
+        align-items: center;
+    }
+    
+    .employee-details h6 {
+        margin: 0 0 2px 0;
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 13px;
+    }
+    
+    .employee-details small {
+        color: #6c757d;
+        font-size: 11px;
+    }
+    
+    .badge {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .badge-student {
+        background: #e8f4fd;
+        color: #3498db;
+        border: 1px solid #3498db;
+    }
+    
+    .badge-staff {
+        background: #d5f4e6;
+        color: #27ae60;
+        border: 1px solid #27ae60;
+    }
+    
+    .badge-active {
+        background: #d5f4e6;
+        color: #27ae60;
+        border: 1px solid #27ae60;
+    }
+    
+    .badge-inactive {
+        background: #fadbd8;
+        color: #e74c3c;
+        border: 1px solid #e74c3c;
+    }
+    
+    .badge-batch {
+        background: #fef9e7;
+        color: #f39c12;
+        border: 1px solid #f39c12;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .btn-action {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 2px solid;
+        background: white;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .btn-view {
+        color: #3498db;
+        border-color: #3498db;
+    }
+    
+    .btn-view:hover {
+        background: #3498db;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .btn-print {
+        color: #27ae60;
+        border-color: #27ae60;
+    }
+    
+    .btn-print:hover {
+        background: #27ae60;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .pagination-wrapper {
+        padding: 25px 30px;
+        background: #f8f9fa;
+        border-top: 1px solid #ecf0f1;
+    }
+    
+    .pagination {
+        justify-content: center;
+        margin: 0;
+    }
+    
+    .page-link {
+        color: #2c3e50;
+        border: 2px solid #ecf0f1;
+        padding: 10px 15px;
+        margin: 0 3px;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .page-link:hover {
+        background: #3498db;
+        border-color: #3498db;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .page-item.active .page-link {
+        background: #2c3e50;
+        border-color: #2c3e50;
+        color: white;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 60px 30px;
+        color: #7f8c8d;
+    }
+    
+    .no-results i {
+        font-size: 64px;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+    
+    .no-results h5 {
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .company-name {
+            font-size: 22px;
+        }
+        
+        .system-title {
+            font-size: 20px;
+        }
+        
+        .employees-table {
+            font-size: 12px;
+        }
+        
+        .employees-table th,
+        .employees-table td {
+            padding: 10px 8px;
+        }
+        
+        .employee-avatar {
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+    }
+@media print {
+    @page {
+        size: A4 portrait; /* تغيير حجم الورقة من A3 إلى A4 */
+        margin: 0mm;
+    }
+
+    /* باقي الكود كما هو */
+    .employees-table th,
+    .employees-table td {
+        font-size: 6pt !important;
+    }
+
+    .employees-table th:nth-child(2),
+    .employees-table td:nth-child(2) {
+        width: 400px !important;
+    }
+
+    .employees-table th:nth-child(14),
+    .employees-table td:nth-child(14),
+    .employees-table th:nth-child(16),
+    .employees-table td:nth-child(16) {
+        width: 100px !important;
+    }
+
+    body {
+        font-family: 'Noto Sans Arabic', sans-serif;
+        background: white !important;
+        color: #000;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .stats-section,
+    .search-section,
+    header, footer, nav, .no-print,
+    .btn-action, .btn-search {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .table-wrapper,
+    .employees-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        font-size: 6pt !important;
+        page-break-inside: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .employees-table {
+        table-layout: auto !important;
+    }
+
+    .employees-table th,
+    .employees-table td {
+        border: 1px solid #000 !important;
+        padding: 2px 3px !important;
+        text-align: center;
+        vertical-align: middle;
+        white-space: normal !important;
+        word-wrap: break-word;
+    }
+
+    .employees-table thead {
+        background: #343a40 !important;
+        color: white !important;
+    }
+
+    tr {
+        page-break-inside: avoid !important;
+        page-break-after: auto !important;
+    }
+
+    .employees-table tbody tr:nth-child(even),
+    .employees-table tbody tr:hover {
+        background: white !important;
+    }
+
+    .main-header,
+    .company-info,
+    .company-name,
+    .system-title {
+        display: block !important;
+        visibility: visible !important;
+        color: #000 !important;
+    }
+
+    body, table, th, td {
+        font-size: 6pt !important;
+    }
+
+    .table-wrapper {
+        overflow-x: visible !important;
+        width: 100% !important;
+    }
+}
+
+
+</style>
+
+<!-- Statistics Section -->
+<div class="stats-section">
+    <div class="stats-bar">
+        <span class="stat-item">
+            <strong>{{ stats.total_persons }}</strong> إجمالي الأشخاص
+        </span>
+        <span class="stat-item">
+            <strong>{{ stats.total_students }}</strong> طالب
+        </span>
+        <span class="stat-item">
+            <strong>{{ stats.total_staff }}</strong> عامل
+        </span>
+        
+    </div>
+</div>
+
+<!-- Search and Filters Section -->
+<div class="search-section">
+    <div class="search-title">
+        <i class="fas fa-search"></i>
+        البحث والفلاتر
+    </div>
+    
+    <form method="get" class="row g-3">
+        <!-- مربع البحث -->
+        <div class="col-md-3">
+            <label for="search" class="form-label fw-bold">البحث</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="search" 
+                name="search" 
+                value="{{ search_query }}"
+                placeholder="ابحث بالاسم، الهاتف، أو البريد الإلكتروني"
+            >
+        </div>
+
+        <!-- اختيار الدفعة -->
+  <div class="col-md-1">
+    <label for="batch" class="form-label fw-bold">الدفعة</label>
+    <select class="form-select" id="batch" name="batch">
+        <!-- الخيار الافتراضي -->
+        <option value="">جميع الدفعات</option>
+
+        <!-- خيارات الدفعات -->
+        <option value="الأولى" {% if batch_filter == "الأولى" %}selected{% endif %}>الأولى</option>
+        <option value="الثانية" {% if batch_filter == "الثانية" %}selected{% endif %}>الثانية</option>
+        <option value="الثالثة" {% if batch_filter == "الثالثة" %}selected{% endif %}>الثالثة</option>
+        <option value="الرابعة" {% if batch_filter == "الرابعة" %}selected{% endif %}>الرابعة</option>
+        <option value="الخامسة" {% if batch_filter == "الخامسة" %}selected{% endif %}>الخامسة</option>
+        <option value="السادسة" {% if batch_filter == "السادسة" %}selected{% endif %}>السادسة</option>
+        <option value="السابعة" {% if batch_filter == "السابعة" %}selected{% endif %}>السابعة</option>
+        <option value="الثامنة" {% if batch_filter == "الثامنة" %}selected{% endif %}>الثامنة</option>
+        <option value="التاسعة" {% if batch_filter == "التاسعة" %}selected{% endif %}>التاسعة</option>
+        <option value="العاشرة" {% if batch_filter == "العاشرة" %}selected{% endif %}>العاشرة</option>
+    </select>
+</div>
+
+
+        <!-- نوع الشخص -->
+        <div class="col-md-2">
+    <label for="type" class="form-label fw-bold">نوع الشخص</label>
+    <select class="form-select" id="type" name="type">
+        <option value="" {% if person_type == '' %}selected{% endif %}>الجميع</option>
+        <option value="student" {% if person_type == 'student' %}selected{% endif %}>الطلاب الكل </option>
+        <option value="staff" {% if person_type == 'staff' %}selected{% endif %}>الكل الموظفين</option>
+        <option value="student_present" {% if person_type == 'student_present' %}selected{% endif %}>الطلاب المتواجدين</option>
+        <option value="staff_present" {% if person_type == 'staff_present' %}selected{% endif %}>المتواجدين الموظفين</option>
+        <option value="student_exit" {% if person_type == 'student_exit' %}selected{% endif %}>الطلاب الخروج</option>
+        <option value="staff_exit" {% if person_type == 'staff_exit' %}selected{% endif %}>الخروج الموظفين</option>
+        
+        <option value="person_only" {% if person_type == 'person_only' %}selected{% endif %}>الأشخاص الكل </option>
+        <option value="person_present" {% if person_type == 'person_present' %}selected{% endif %}>الأشخاص المتواجدين</option>
+        <option value="person_exit" {% if person_type == 'person_exit' %}selected{% endif %}>الأشخاص الخروج</option>
+
+    </select>
+</div>
+
+<!-- اختيار التخصص -->
+<div class="col-md-2">
+    <label for="specialization" class="form-label fw-bold">التخصص</label>
+    <select class="form-select" id="specialization" name="specialization">
+        <option value="">جميع التخصصات</option>
+        {% for specialization in specializations %}
+            <option value="{{ specialization.id }}" 
+                {% if specialization_filter == specialization.id|stringformat:"s" %}selected{% endif %}
+            >
+                {{ specialization.name }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+<!-- اختيار المستوى الدراسي -->
+ <div class="col-md-2">
+    <label for="level" class="form-label fw-bold">السنه الدراسيه</label>
+    <select class="form-select" id="level" name="level">
+        <option value="">جميع المستويات</option>
+        {% for value, display in levels %}
+            <option value="{{ value }}" 
+                {% if level_filter == value %}selected{% endif %}
+            >
+                {{ display }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+
+
+        <!-- زر الفلترة -->
+        <div class="col-md-2">
+            <label class="form-label">&nbsp;</label>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-search">
+                    <i class="fas fa-filter me-1"></i>
+                    فلترة النتائج
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Employees List Section -->
+<div class="employees-section">
+    <div class="employees-header">
+        <div class="employees-title">
+            <i class="fas fa-users"></i>
+
+            {% if person_type == "student" %}
+                قائمة الطلاب
+            {% elif person_type == "staff" %}
+              قائمة الموظفين
+            {% elif person_type == "student_present" %}
+                قائمة الطلاب المتواجدين
+            {% elif person_type == "staff_present" %}
+              قائمة الموظفين المتواجدين
+            {% elif person_type == "student_exit" %}
+                قائمة الطلاب الخارجين
+            {% elif person_type == "staff_exit" %}
+             قائمة الموظفين الخروج
+            {% elif person_type == "person_only" %}
+                قائمة الأشخاص
+            {% elif person_type == "person_present" %}
+                قائمة الأشخاص المتواجدين
+            {% elif person_type == "person_exit" %}
+                قائمة الأشخاص الخارجين
+            {% else %}
+               قائمة الطلاب والموظفين
+            {% endif %}
+
+            {% comment %} عرض العدد دائمًا بعد الفلترة {% endcomment %}
+            {% if page_obj %}
+                <span class="employee-count">{{ page_obj.paginator.count }} شخص</span>
+            {% endif %}
+
+            {% if specialization_filter %}
+                {% for spec in specializations %}
+                    {% if spec.id|stringformat:"s" == specialization_filter|stringformat:"s" %}
+                        <span class="employee-count">التخصص: {{ spec.name }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if level_filter %}
+                {% for value, display in levels %}
+                    {% if value == level_filter %}
+                        <span class="employee-count"> السنه الدراسيه: {{ display }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+    
+    {% if search_query or batch_filter or person_type %}
+        {% if page_obj and page_obj.paginator.count > 0 %}
+            <div class="table-wrapper">
+                <table class="employees-table">
+ <thead>
+    {% if person_type in "person_only person_present person_exit" %}
+         <tr>
+        <th>#</th>
+        <th style="width: 950px;">الاسم</th>               <!-- تكبير الاسم -->
+        <th>الدفعة</th>
+        <th>المعدل</th>
+        <th style="width: 150px;">تاريخ الميلاد</th>     <!-- تكبير تاريخ الميلاد -->
+        <th>القسم</th>
+        <th>المحافظة</th>
+        <th>المديرية</th>
+        <th>العزلة</th>
+        <th>القرية</th>
+        <th>المؤهل التعليمي</th>
+        <th style="width: 30px;">الجهة المستقطبة</th>
+        <th>رقم التلفون</th>
+        <th style="width: 50px;">تاريخ الدخول</th>       <!-- تكبير تاريخ الدخول -->
+        <th>التوقف</th>
+        <th style="width: 50px;">تاريخ الخروج</th>       <!-- تكبير تاريخ الخروج -->
+    </tr>
+
+    {% elif person_type in "student student_present student_exit" %}
+        <tr>
+            <th style="width: 30px;">#</th>
+            <th style="width: 250px;">الاسم</th>
+            <th style="width: 120px;">الدفعة</th>
+            <th style="width: 120px;">الجامعة</th>
+            <th style="width: 120px;">التخصص</th>
+            <th style="width: 120px;">السنه الدراسيه</th>
+            <th style="width: 150px;">رقم الجوال</th>
+        </tr>
+    {% else %}
+        <tr>
+            <th style="width: 50px;">#</th>
+            <th style="width: 170px;">الاسم</th>
+            <th style="width: 120px;">العمل</th>
+            <th style="width: 300px;">المهام الموكلة </th>
+            <th style="width: 120px;">التوقف</th>
+            <th style="width: 150px;">رقم الجوال</th>
+        </tr>
+    {% endif %}
+</thead>
+
+<tbody>
+    {% for person in page_obj %}
+        {% if person_type in "person_only person_present person_exit" %}
+            <tr onclick="viewEmployee('{{ person.id|escapejs }}')" {% if person.typestatus == "متوقف" %}style="background-color: #fff3cd;"{% endif %}>
+                <td>{{ forloop.counter }}</td> <!-- الترقيم -->
+                <td>{{ person.name }}</td>
+                <td>{{ person.batch|default:"غير محدد" }}</td>
+                <td>{{ person.high_school_grade|default:"غير محدد"}}</td>
+                <td>{{ person.date_of_birth |default:"غير محدد"}}</td>
+                <td>{{ person.Section|default:"غير محدد" }}</td>
+                <td>{{ person.address.street|default:"غير محدد" }}</td>      
+                <td>{{ person.address.city|default:"غير محدد" }}</td>       
+                <td>{{ person.address.state|default:"غير محدد" }}</td>       
+                <td>{{ person.address.country|default:"غير محدد" }}</td>     
+                <td>{{ person.academic_qualification|default:"غير محدد" }}</td>
+                <td>{{ person.Polarized_sid|default:"غير محدد" }}</td>
+                <td>{{ person.phone|default:"غير محدد" }}</td>
+                <td>{{ person.entry_date|date:"Y-m-d"|default:"غير محدد" }}</td>
+                <td>{{ person.typestatus|default:"غير محدد" }}</td>
+                <td>{{ person.exit_date|date:"Y-m-d"|default:"غير محدد" }}</td>
+            </tr>
+        {% elif person_type in "student student_present student_exit" %}
+            <tr onclick="viewEmployee('{{ person.id|escapejs }}')"
+    {% if person.staff and person.staff.continue_work == False %}
+        style="background-color: #fff3cd;"
+    {% endif %}
+>
+
+                <td>{{ forloop.counter }}</td> <!-- الترقيم -->
+                <td>{{ person.name }}</td>
+                <td>{% if person.batch %}{{ person.batch }}{% else %}غير محدد{% endif %}</td>
+                <td>{{ person.student.university.name|default:"غير محدد" }}</td>
+                <td>
+                    {% if person.student.specialization %}
+                        {{ person.student.specialization.name }}
+                    {% else %}
+                        غير محدد
+                    {% endif %}
+                </td> <!-- عرض التخصص بشكل صحيح -->
+               <td>
+    {% if person.student.learnyear %}
+        {{ person.student.learnyear }}
+    {% else %}
+        غير محدد
+    {% endif %}
+</td>
+
+
+             <td>{{ person.phone|default:"غير محدد" }}</td>
+            </tr>
+        {% else %}
+<tr onclick="viewEmployee('{{ person.id|escapejs }}')"
+    {% if person.staff and person.staff.continue_work == False %}
+        style="background-color: #fff3cd;"
+    {% endif %}
+>
+    <td>{{ forloop.counter }}</td> <!-- الترقيم -->
+    <td>{{ person.name }}</td>
+    <td>{{ person.staff.position|default:"غير محدد" }}</td>
+    <td>{{ person.staff.text_notes|default:"غير محدد" }}</td>
+    <td>
+        {% if person.staff.continue_work %}
+            مستمر بالعمل
+        {% else %}
+            متوقف
+        {% endif %}
+    </td>
+    <td>{{ person.phone|default:"غير محدد" }}</td>
+</tr>
+
+        {% endif %}
+    {% endfor %}
+</tbody>
+
+</table>
+
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <div class="pagination-wrapper">
+                    <nav aria-label="تصفح الصفحات">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if batch_filter %}&batch={{ batch_filter }}{% endif %}{% if person_type %}&type={{ person_type }}{% endif %}">
+                                        <i class="fas fa-chevron-right me-1"></i>السابق
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ num }}</span>
+                                    </li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}{% if batch_filter %}&batch={{ batch_filter }}{% endif %}{% if person_type %}&type={{ person_type }}{% endif %}">
+                                            {{ num }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if batch_filter %}&batch={{ batch_filter }}{% endif %}{% if person_type %}&type={{ person_type }}{% endif %}">
+                                        التالي<i class="fas fa-chevron-left ms-1"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="no-results">
+                <i class="fas fa-user-slash"></i>
+                <h5>عذراً، لم يتم العثور على أي شخص مطابق للبحث</h5>
+                <p>جرب تعديل معايير البحث أو الفلاتر</p>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="no-results">
+            <i class="fas fa-hand-peace"></i>
+            <h5>مرحباً بك في نظام إدارة الموارد البشرية</h5>
+            <p>استخدم مربع البحث أعلاه للعثور على الأشخاص أو تصفية النتائج</p>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    function viewEmployee(employeeId) {
+        window.location.href = `/reports/person/${employeeId}/`;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // تحديث البحث والفلاتر مباشرة
+        const form = document.querySelector('.search-section form');
+        const searchInput = document.getElementById('search');
+        const batchSelect = document.getElementById('batch');
+        const typeSelect = document.getElementById('type');
+        const specializationSelect = document.getElementById('specialization'); // ✅ إضافة التخصص
+        const levelSelect = document.getElementById('level'); // ✅ إضافة المستوى الدراسي
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.search-section form');
+    const searchInput = document.getElementById('search');
+    const batchSelect = document.getElementById('batch');
+    const typeSelect = document.getElementById('type');
+    const specializationSelect = document.getElementById('specialization');
+    const levelSelect = document.getElementById('level');
+
+    // ✅ البحث فقط عند الضغط على Enter
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            form.submit();
+        }
+    });
+
+    // ✅ الفلاتر تعمل تلقائيًا عند التغيير
+    batchSelect.addEventListener('change', function() {
+        form.submit();
+    });
+    typeSelect.addEventListener('change', function() {
+        form.submit();
+    });
+    specializationSelect.addEventListener('change', function() {
+        form.submit();
+    });
+    levelSelect.addEventListener('change', function() {
+        form.submit();
+    });
+
+    // منع النقر على الصف أثناء الضغط على الأزرار
+    const actionButtons = document.querySelectorAll('.btn-action');
+    actionButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+
+
+        // عند تغيير الدفعة أو النوع أو التخصص أو المستوى الدراسي
+        batchSelect.addEventListener('change', function() {
+            form.submit();
+        });
+        typeSelect.addEventListener('change', function() {
+            form.submit();
+        });
+        specializationSelect.addEventListener('change', function() { // ✅
+            form.submit();
+        });
+        levelSelect.addEventListener('change', function() { // ✅
+            form.submit();
+        });
+
+        // منع تفعيل النقر على الصف عند الضغط على الأزرار داخل الصف
+        const actionButtons = document.querySelectorAll('.btn-action');
+        actionButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}

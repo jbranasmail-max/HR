@@ -1,0 +1,452 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}نظام إدارة الموارد البشرية{% endblock %}</title>
+        
+   <link href="{% static 'bootstrap/css/bootstrap.rtl.min.css' %}" rel="stylesheet">
+   <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet">
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'js/chart.min.js' %}"></script>
+
+<!-- html2pdf.js -->
+<script src="{% static 'js/html2pdf.bundle.min.js' %}"></script>
+
+<!-- html2canvas -->
+<script src="{% static 'js/html2canvas.min.js' %}"></script>
+
+<!-- jsPDF -->
+<script src="{% static 'js/jspdf.umd.min.js' %}"></script>
+
+<!-- XLSX / SheetJS -->
+<script src="{% static 'js/xlsx.full.min.js' %}"></script>
+
+    <style>
+        * { font-family: 'Noto Sans Arabic', sans-serif; }
+        body { background-color: #f8f9fa; }
+        .modal .form-label { font-weight: 600; }
+
+        /* ستايلات Header الحديث */
+        .modern-header {
+            background: linear-gradient(135deg, #343a40 0%, #4a5158 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+            animation: slideInDown 0.6s ease-out;
+        }
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    font-family: "Noto Sans Arabic", sans-serif;
+    background: white !important;
+  }
+  /* ظهور المخططات بالكامل عند الطباعة */
+canvas, svg, img {
+  max-width: 100% !important; /* يضمن عرضها الكامل داخل الصفحة */
+  height: auto !important;     /* يحافظ على نسبة الارتفاع */
+  page-break-inside: avoid !important; /* لا تنكسر على أكثر من صفحة */
+ -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+
+
+  /* إزالة العناصر غير الضرورية */
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+
+  /* إعداد الصفحة عمودياً */
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  table {
+    width: 100% !important;
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 12px;
+    word-wrap: break-word;
+    page-break-inside: auto !important;
+  }
+
+  th, td {
+    border: 1px solid #000 !important;
+    padding: 4px !important;
+    text-align: center;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  /* تصغير الخط تلقائيًا للجداول الكبيرة جدًا */
+  table.large-table {
+    font-size: 10px; /* يمكن تعديل الحجم حسب الحاجة */
+  }
+
+  /* ضغط الجدول أفقيًا إذا كان عريضًا جداً */
+  table.responsive-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url("{% static 'fonts/NotoSansArabic-Regular.ttf' %}") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url("{% static 'fonts/NotoSansArabic-Bold.ttf' %}") format('truetype');
+    font-weight: 700;
+}
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+        .modern-header::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+            opacity: 0.1;
+        }
+        .header-content { position: relative; z-index: 2; }
+        .navbar-brand-modern { font-weight:700; font-size:1.6rem; color:white !important; text-decoration:none; display:flex; align-items:center; text-shadow:0 2px 4px rgba(0,0,0,0.3); transition:0.3s; }
+        .navbar-brand-modern:hover { color:#f0f8ff !important; transform:translateY(-1px); }
+        .brand-icon { background: rgba(255,255,255,0.2); padding:8px 10px; border-radius:10px; margin-left:12px; font-size:1.3rem; animation: float 3s ease-in-out infinite; transition:0.3s; }
+        .nav-links-modern { display:flex; gap:20px; align-items:center; }
+        .nav-link-modern { color:rgba(255,255,255,0.9) !important; text-decoration:none; padding:8px 16px; border-radius:20px; background:rgba(255,255,255,0.1); border:1px solid transparent; font-weight:500; display:flex; align-items:center; gap:6px; transition:0.3s; position:relative; }
+        .nav-link-modern:hover { background: rgba(255,255,255,0.2); color:white !important; border-color:rgba(255,255,255,0.3); transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+        .nav-link-modern.active { background: rgba(255,255,255,0.25); color:white !important; border-color: rgba(255,255,255,0.4); }
+        .mobile-toggle { background:none; border:2px solid rgba(255,255,255,0.3); border-radius:8px; padding:8px; color:white; transition:0.3s; }
+        .mobile-toggle span { width:20px; height:2px; background:white; display:block; margin:3px 0; transition:0.3s; }
+        @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+        @keyframes slideInDown {from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+        @media(max-width:768px){.navbar-brand-modern{font-size:1.3rem;} .nav-links-modern{flex-direction:column;gap:10px;width:100%;margin-top:20px;}}
+    </style>
+</head>
+<body class="reports-page">
+
+
+    <!-- Modern Header Navigation -->
+    <header class="modern-header no-print">
+        <div class="container header-content">
+            <nav class="d-flex justify-content-between align-items-center py-3">
+                <a href="{% url 'reports_home' %}" class="navbar-brand-modern">
+                    <div class="brand-icon"><i class="fas fa-chart-line"></i></div>
+                    <div>
+                        <div style="font-size:1.6rem;margin-bottom:-5px;">نظام التقارير</div>
+                        <div style="font-size:0.9rem;opacity:0.8;font-weight:400;">إدارة الموارد البشرية</div>
+                    </div>
+                </a>
+
+               <div class="nav-links-modern d-none d-lg-flex">
+
+    <a href="{% url 'logout' %}" class="nav-link-modern">
+        تسجيل الخروج
+    </a>
+
+    <a href="{% url 'reports_home' %}" class="nav-link-modern active">
+        <i class="fas fa-home"></i> الرئيسية
+    </a>
+
+    <a href="/admin/" class="nav-link-modern">
+        <i class="fas fa-cogs"></i> لوحة الإدارة
+    </a>
+
+    <a href="#" class="nav-link-modern" onclick="window.print()">
+        <i class="fas fa-print"></i> طباعة
+    </a>
+
+    <a href="#" class="nav-link-modern" onclick="showSaveModal()">
+        <i class="fas fa-save"></i> حفظ التقرير
+    </a>
+
+    <a href="{% url 'task_list' %}" class="nav-link-modern">
+        <i class="fas fa-tasks"></i> المهام
+    </a>
+
+</div>
+
+
+                <button class="mobile-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav"><span></span><span></span><span></span></button>
+            </nav>
+
+            <div class="collapse d-lg-none" id="mobileNav">
+                <div class="mobile-nav">
+              
+                  
+
+                    <a href="{% url 'reports_home' %}" class="nav-link-modern"><i class="fas fa-home"></i> الرئيسية</a>
+                    <a href="/admin/" class="nav-link-modern"><i class="fas fa-cogs"></i> لوحة الإدارة</a>
+                    <a href="#" class="nav-link-modern" onclick="window.print()"><i class="fas fa-print"></i> طباعة التقرير</a>
+                    <a href="{% url 'task_list' %}" class="nav-link-modern"><i class="fas fa-tasks"></i> المهام</a>
+                </div>
+            </div>
+        </div>
+    </header>
+   <!-- زر فتح مودال الحفظ -->
+    
+
+    <!-- مودال حفظ التقرير -->
+    <div class="modal fade" id="saveReportModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">حفظ التقرير</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                </div>
+                <P> يتم الاحتفاظ في ملف التنزيلات</P>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">اسم الشخص:</label>
+                        <input type="text" class="form-control" id="personName" placeholder="اكتب اسم الشخص" required>
+                    </div>
+                                
+                <div class="mb-3">
+                    <label class="form-label">نوع التقرير:</label>
+                    <select class="form-select" id="reportType" required>
+<option>نظام الموارد البشريه كامل</option>
+<option>الشئون</option>
+<option>الاكاديمي </option>
+<option>الصحي </option>
+<option>المالي </option>
+<option>الثقافي</option>
+<option>المعلومات الأساسية</option>
+<option>معلومات الطالب</option>
+<option>الدرجات</option>
+<option>ملخص الأداء</option>
+<option>الجدول الزمني الأكاديمي</option>
+<option>مخططات للتقدم الأكاديمي</option>
+<option>المخالفات</option>
+<option>الدورات</option>
+<option>السجل الطبي</option>
+<option>العهد</option>
+<option>الجدول الزمني الثقافي</option>
+<option>المخططات الثقافية</option>
+<option>الإعتمادية</option>
+<option>التدريب</option>
+<option>المهام</option>
+<option>العاملين</option>
+<option>الطلاب</option>
+<option>المخططات الثقافية لكل شهر</option>
+<option>المخططات الثقافية لكل سنة</option>
+<option>المخططات الأكاديمية لكل ترم</option>
+<option>المخططات الأكاديمية لكل سنة</option>
+<option>المخططات الأكاديمية لجميع السنين</option>
+</select>
+                </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">صيغة الحفظ:</label>
+                        <select class="form-select" id="format">
+                            <option value="pdf" selected>PDF</option>
+                            <option value="excel">Excel</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button class="btn btn-primary" onclick="saveReport()">حفظ التقرير</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- محتوى التقرير -->
+    <main class="container my-4" id="reportContent">
+        {% block content %}{% endblock %}
+    </main>
+
+ 
+
+    <!-- Bootstrap JS -->
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<!-- مكتبات بدون نت -->
+<script src="{% static 'js/html2pdf.bundle.min.js' %}"></script>
+<script src="{% static 'js/xlsx.full.min.js' %}"></script>
+
+<script src="{% static 'js/html2canvas.min.js' %}"></script>
+<script src="{% static 'js/jspdf.umd.min.js' %}"></script>
+<script src="{% static 'js/xlsx.full.min.js' %}"></script>
+
+<style>
+#reportContent {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+</style>
+<script>
+// تحويل أي نصوص عربية في SVG بشكل آمن
+function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+}
+
+// تجهيز المحتوى قبل الحفظ
+async function prepareContent(container) {
+    // تحويل كل Canvas (Chart.js) إلى صور
+    container.querySelectorAll('canvas').forEach(canvas => {
+        try {
+            if (canvas.chart) {
+                const img = new Image();
+                img.src = canvas.chart.toBase64Image();
+                img.style.width = canvas.style.width || canvas.width + "px";
+                img.style.height = canvas.style.height || canvas.height + "px";
+                canvas.parentNode.replaceChild(img, canvas);
+            }
+        } catch(e){ console.warn(e); }
+    });
+
+    // تحويل كل SVG إلى صور
+    container.querySelectorAll('svg').forEach(svg => {
+        try {
+            const xml = new XMLSerializer().serializeToString(svg);
+            const img64 = utf8_to_b64(xml);
+            const img = new Image();
+            img.src = 'data:image/svg+xml;base64,' + img64;
+            img.style.width = svg.style.width || svg.getBoundingClientRect().width + "px";
+            img.style.height = svg.style.height || svg.getBoundingClientRect().height + "px";
+            svg.parentNode.replaceChild(img, svg);
+        } catch(e){ console.warn(e); }
+    });
+
+    // التأكد من تحميل كل الصور <img>
+    const images = container.querySelectorAll('img');
+    for (let img of images) {
+        if (!img.complete) {
+            await new Promise(resolve => { img.onload = img.onerror = resolve; });
+        }
+    }
+
+    await new Promise(r => setTimeout(r, 300));
+}
+
+// فتح المودال
+function showSaveModal() {
+    const modal = new bootstrap.Modal(document.getElementById('saveReportModal'));
+    modal.show();
+}
+
+// حفظ التقرير كـ PDF أو Excel
+async function saveReport() {
+    const personName = document.getElementById('personName').value.trim();
+    const reportType = document.getElementById('reportType').value;
+    const format = document.getElementById('format').value;
+
+    if (!personName || !reportType) {
+        alert('يرجى كتابة اسم الشخص واختيار نوع التقرير');
+        return;
+    }
+
+    const fileName = personName + '_' + reportType;
+    const element = document.getElementById('reportContent');
+
+    // إخفاء الأقسام المراد إخفاؤها أثناء الحفظ
+    const hideElements = document.querySelectorAll('.stats-section, .search-section');
+    hideElements.forEach(el => el.style.display = 'none');
+
+    try {
+        await prepareContent(element);
+
+        // ===== PDF =====
+        if (format === 'pdf' || format === 'all') {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'pt', 'a4');
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const margin = 20;
+
+            const canvas = await html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                scrollY: -window.scrollY,
+                backgroundColor: "#ffffff"
+            });
+
+            const imgData = canvas.toDataURL('image/jpeg', 1.0);
+            const imgWidth = pageWidth - 2 * margin;
+            const imgHeight = canvas.height * (imgWidth / canvas.width);
+
+            if (imgHeight <= pageHeight - 2 * margin) {
+                pdf.addImage(imgData, 'JPEG', margin, margin, imgWidth, imgHeight);
+            } else {
+                let position = 0;
+                let remainingHeight = canvas.height;
+                const pageCanvasHeight = (pageHeight - 2 * margin) * (canvas.width / imgWidth);
+
+                while (remainingHeight > 0) {
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = canvas.width;
+                    tempCanvas.height = Math.min(pageCanvasHeight, remainingHeight);
+                    const ctx = tempCanvas.getContext('2d');
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                    ctx.drawImage(canvas, 0, position, canvas.width, tempCanvas.height, 0, 0, canvas.width, tempCanvas.height);
+
+                    const pageImgData = tempCanvas.toDataURL('image/jpeg', 1.0);
+                    pdf.addImage(pageImgData, 'JPEG', margin, margin, imgWidth, (tempCanvas.height * imgWidth / canvas.width));
+
+                    remainingHeight -= tempCanvas.height;
+                    position += tempCanvas.height;
+
+                    if (remainingHeight > 0) pdf.addPage();
+                }
+            }
+
+            pdf.save(fileName + '.pdf');
+        }
+
+        // ===== Excel =====
+        if (format === 'excel' || format === 'all') {
+            const table = element.querySelector("table");
+            const wb = XLSX.utils.book_new();
+
+            if (!table) {
+                const ws = XLSX.utils.aoa_to_sheet([[element.innerText]]);
+                XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+            } else {
+                const ws = XLSX.utils.table_to_sheet(table, { raw: true });
+                const range = XLSX.utils.decode_range(ws['!ref']);
+                for (let R = range.s.r; R <= range.e.r; ++R) {
+                    for (let C = range.s.c; C <= range.e.c; ++C) {
+                        const cell_ref = XLSX.utils.encode_cell({ c: C, r: R });
+                        if (!ws[cell_ref]) continue;
+                        ws[cell_ref].s = {
+                            fill: { fgColor: { rgb: "FFFFFF" } },
+                            font: { color: { rgb: "000000" }, bold: false },
+                            alignment: { horizontal: "center", vertical: "center", wrapText: true }
+                        };
+                    }
+                }
+
+                ws['!cols'] = Array(range.e.c - range.s.c + 1).fill({ wpx: 120 });
+                ws['!print'] = { horizontalCentered: true };
+                XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+            }
+
+            XLSX.writeFile(wb, fileName + ".xlsx");
+        }
+
+    } catch (err) {
+        console.error("حدث خطأ أثناء الحفظ:", err);
+        alert("حدث خطأ أثناء حفظ التقرير. تحقق من Console.");
+    } finally {
+        // إعادة ظهور الأقسام بعد الحفظ
+        hideElements.forEach(el => el.style.display = '');
+        const modal = bootstrap.Modal.getInstance(document.getElementById('saveReportModal'));
+        if(modal) modal.hide();
+    }
+}
+</script>
+
+</body>
+</html>

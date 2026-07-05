@@ -1,0 +1,62 @@
+.inline-group {
+    width: 100%; /* الجدول يغطي كامل المساحة */
+    overflow-x: auto; /* السماح بالتمرير الأفقي فقط إذا احتاج */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.inline-group table {
+    border-collapse: collapse;
+    width: 100%; /* الجدول يغطي كامل المساحة */
+    background: #1e1e1e; /* Dark table background */
+    color: #f0f0f0;
+    min-width: max-content; /* يجعل الجدول لا ينضغط */
+}
+
+.inline-group table th,
+.inline-group table td {
+    padding: 8px 12px;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+/* ===== Sticky Header ===== */
+.inline-group table thead th {
+    position: sticky;
+    top: 0;
+    background: #2c3034;
+    color: #f8f9fa;
+    z-index: 20;
+}
+
+/* ===== Sticky Columns: العمود الأول (السنة) + العمود الثاني (الشهر) ===== */
+.inline-group table thead th:nth-child(1),
+.inline-group table tbody td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    background: #2c2c2c;
+    z-index: 15;
+    border-right: 1px solid #555;
+}
+
+.inline-group table thead th:nth-child(2),
+.inline-group table tbody td:nth-child(2) {
+    position: sticky;
+    left: 120px; /* مسافة العمود الأول */
+    background: #2c2c2c;
+    z-index: 15;
+    border-right: 1px solid #555;
+}
+
+/* ===== Highlight Attendance Status ===== */
+.inline-group table tbody td.count_h { background-color: #4caf50; color: #fff; }
+.inline-group table tbody td.count_m { background-color: #ff9800; color: #fff; }
+.inline-group table tbody td.count_g { background-color: #f44336; color: #fff; }
+.inline-group table tbody td.count_d { background-color: #2196f3; color: #fff; }
+.inline-group table tbody td.count_th { background-color: #9c27b0; color: #fff; }
+.inline-group table tbody td.count_holiday { background-color: #607d8b; color: #fff; }
+
+/* ===== Hover Effect ===== */
+.inline-group table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

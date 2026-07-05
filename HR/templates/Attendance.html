@@ -1,0 +1,41 @@
+{% extends 'reports/base.html' %}
+  {% block content %}
+<form method="GET" action="">
+    <div style="display: flex; gap: 15px; align-items: center; padding: 20px; background: #8d6868; border-radius: 8px;">
+        
+        <div>
+            <input type="text" name="q" placeholder="بحث بالاسم..." value="{{ request.GET.q }}">
+        </div>
+
+        <div>
+            <select name="month">
+                <option value="">كل الأشهر</option>
+                {% for i in "123456789012"|make_list %}
+                    <option value="{{ forloop.counter }}" {% if request.GET.month == forloop.counter|stringformat:"s" %}selected{% endif %}>
+                        شهر {{ forloop.counter }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <label for="years">اختر السنة:</label>
+<select id="years" name="years">
+    <option value="2025">جميع السنين </option>
+  <option value="2025">2025</option>
+  <option value="2026">2026</option>
+  <option value="2027">2027</option>
+  <option value="2028">2028</option>
+  <option value="2029">2029</option>
+  <option value="2030">2030</option>
+  <option value="2031">2031</option>
+  <option value="2032">2032</option>
+  <option value="2033">2033</option>
+  <option value="2034">2034</option>
+  <option value="2035">2035</option>
+</select>
+
+        <button type="submit">تصفية</button>
+        <a href="?">إلغاء الفلتر</a>
+    </div>
+</form>
+{% endblock content %}

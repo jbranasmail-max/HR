@@ -1,0 +1,139 @@
+{% extends "reports/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+  <div style="margin-bottom: 20px" class="no-print">
+    <label>السنة الهجرية:
+      <input type="number" id="search-year" style="width: 120px; height: 30px" />
+    </label>
+    <button onclick="filterCharts()" style="width:80px">بحث</button>
+    <button onclick="resetCharts()" style="width:100px">عرض الكل</button>
+  </div>
+
+  <h2 class="mb-4">المخططات الثقافيه لجميع الاشهر</h2>
+  <div id="chartsContainer"></div>
+</div>
+<style>
+@media print {
+    .no-print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+</style>
+<!-- Chart.js محلي -->
+<script src="{% static 'js/chart.umd.min.js' %}"></script>
+<script src="{% static 'js/chartjs-plugin-datalabels.min.js' %}"></script>
+
+<script>
+const chartsContainer = document.getElementById("chartsContainer");
+
+const alabadi_data = {{ alabadi_data|safe }};
+const cultural_data = {{ cultural_data|safe }};
+const behavioral_data = {{ behavioral_data|safe }};
+
+// تحويل الأرقام العربية الشرقية (اختياري)
+function toArabicNumber(n){
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+const HIJRI_MONTH_NAMES = {
+  1:"محرم",2:"صفر",3:"ربيع الأول",4:"ربيع الآخر",
+  5:"جمادى الأولى",6:"جمادى الآخرة",7:"رجب",8:"شعبان",
+  9:"رمضان",10:"شوال",11:"ذو القعدة",12:"ذو الحجة"
+};
+
+const sides = [
+  {key:"alabadi", title:"الجانب العبادي", data: alabadi_data},
+  {key:"cultural", title:"الجانب الثقافي", data: cultural_data},
+  {key:"behavioral", title:"الجانب السلوكي", data: behavioral_data},
+];
+
+function renderCharts(selectedYear=null){
+  chartsContainer.innerHTML = "";
+
+  sides.forEach(side=>{
+    const keys = Object.keys(side.data)
+      .filter(k=> !selectedYear || k.startsWith(selectedYear))
+      .sort((a,b)=>{
+        const [y1,m1] = a.split("-").map(Number);
+        const [y2,m2] = b.split("-").map(Number);
+        return y1!==y2 ? y1-y2 : m1-m2;
+      });
+
+    if(keys.length===0) return;
+
+    const chartDiv = document.createElement("div");
+    chartDiv.classList.add("card","mb-4","p-3","shadow-sm");
+    chartDiv.innerHTML = `<h4>${side.title}</h4>`;
+    chartsContainer.appendChild(chartDiv);
+
+    const canvas = document.createElement("canvas");
+    canvas.height = 400;
+    chartDiv.appendChild(canvas);
+
+    const labels = keys.map(k=> HIJRI_MONTH_NAMES[Number(k.split("-")[1])] || k.split("-")[1]);
+    const values = keys.map(k=> side.data[k]);
+
+    new Chart(canvas, {
+      type:"line",
+      data:{
+        labels: labels,
+        datasets:[{
+          label:"القيمة الشهرية",
+          data:values,
+          borderColor:"black",
+          backgroundColor:"rgba(54,162,235,0.3)",
+          fill:false,
+          tension:0.3,
+          pointRadius:5
+        }]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{display:false},
+          datalabels:{
+            display:true,
+            color:"black",
+            font:{size:12, weight:"bold"},
+            anchor: 'center', // النص مركزي
+            align: 'top', // جميع النقاط تظهر فوق النقطة
+            formatter: function(value){
+              return toArabicNumber(value); // الأرقام عربية
+            }
+          }
+        },
+        scales:{
+          y:{
+            beginAtZero:true,
+            min:0,
+            max: side.key === "alabadi" ? 100 : side.key === "cultural" ? 30 : 70,
+            grid:{display:false},
+            ticks:{
+              callback: val => toArabicNumber(val)
+            }
+          },
+          x:{ grid:{display:false} }
+        }
+      },
+      plugins:[ChartDataLabels]
+    });
+  });
+}
+
+renderCharts();
+
+function filterCharts(){
+  const year = document.getElementById("search-year").value;
+  renderCharts(year);
+}
+
+function resetCharts(){
+  document.getElementById("search-year").value="";
+  renderCharts();
+}
+</script>
+
+{% endblock %}

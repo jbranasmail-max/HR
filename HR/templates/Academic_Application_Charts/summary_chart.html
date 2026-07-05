@@ -1,0 +1,121 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/chart.min.js' %}"></script>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <!-- عنوان الطالب -->
+    <div class="student-card" style="background: white; color: black; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 40px; text-align:center;">
+        <h2 style="margin: 0; font-weight: 700;"> مخططات التقدم الأكاديمي للطالب:<br><p>{{ student.person.name.arabic_full_name }}</p></h2>
+    </div>
+
+    <!-- المجموع والمعدل العام -->
+    <div class="student-card" style="background: #f9f9f9; color: black; padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align:center;">
+        <div id="summary"></div>
+
+
+        
+    </div>
+
+    <div class="chart-container">
+        <canvas id="yearChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+    const yearAverages = {{ year_avgs_json|safe }};
+    const yearGradesText = {{ year_grades_text_json|safe }};
+
+    // دالة لتحديد التقدير واللون
+    function getGradeInfo(value) {
+        if (value >= 90) return { text: 'ممتاز', color: 'green' };
+        if (value >= 80) return { text: 'جيد جدًا', color: '#0d6efd' };
+        if (value >= 65) return { text: 'جيد', color: '#ffc107' };
+        if (value >= 50) return { text: 'مقبول', color: 'orange' };
+        return { text: 'راسب', color: 'red' };
+    }
+
+    // حساب المعدل العام
+const totalScore = yearAverages.reduce((a, b) => a + b, 0);
+const rawAvg = (yearAverages.length > 0) ? (totalScore / yearAverages.length) : 0;
+const overallAvg = Number.isInteger(rawAvg) ? rawAvg : rawAvg.toFixed(2);
+const overallInfo = getGradeInfo(rawAvg);
+
+// عرض النتائج
+document.getElementById('summary').innerHTML = `
+<p><strong>المعدل العام:</strong> ${overallAvg} %</p>
+<p><strong>التقدير العام:</strong> <span style="color:black">${overallInfo.text}</span></p>
+`;
+
+    // أسماء السنوات
+    const yearLabels = yearAverages.map((_, i) => {
+        const suffixes = ['الأولى', 'الثانية', 'الثالثة', 'الرابعة', 'الخامسة', 'السادسة', 'السابعة', 'الثامنة', 'التاسعة', 'العاشرة'];
+        return `السنة ${suffixes[i] || i+1}`;
+    });
+
+    // ألوان النقاط حسب التقدير
+    const pointColors = yearAverages.map(g => getGradeInfo(g).color);
+
+    // Plugin لعرض المعدل + التقدير فوق النقاط دائمًا
+    const showLabelsPlugin = {
+    id: 'showLabelsPlugin',
+    afterDatasetsDraw(chart) {
+        const { ctx, chartArea } = chart; // إضافة chartArea لمعرفة حدود المخطط
+        chart.data.datasets.forEach((dataset, i) => {
+            const meta = chart.getDatasetMeta(i);
+            meta.data.forEach((point, index) => {
+                const value = dataset.data[index];
+                const info = getGradeInfo(value);
+                ctx.save();
+                ctx.font = '12px Arial';
+                ctx.fillStyle = info.color;
+                ctx.textAlign = 'center';
+
+                // نص فوق النقطة عادة، وإذا كانت الدرجة 100% أو ستختفي خارج الحد الأعلى، نضعه تحت النقطة
+                let textY = point.y - 12;
+                if (value >= 100 || textY < chartArea.top + 5) {
+                    textY = point.y + 15;
+                }
+
+                ctx.fillText(`${value}% (${info.text})`, point.x, textY);
+                ctx.restore();
+            });
+        });
+    }
+};
+
+    // رسم المخطط
+    const ctx = document.getElementById('yearChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: yearLabels,
+            datasets: [{
+                label: 'المعدل السنوي',
+                data: yearAverages,
+                borderColor: 'black',
+                backgroundColor: 'rgba(0,0,0,0.05)',
+                pointBackgroundColor: pointColors,
+                pointBorderColor: pointColors,
+                tension: 0.3,
+                fill: true,
+                pointRadius: 7,
+                pointHoverRadius: 9
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, max: 100, grid: { display: false } },
+                x: { grid: { display: false }, ticks: { font: { size: 14 } } }
+            }
+        },
+        plugins: [showLabelsPlugin]
+    });
+</script>
+
+{% endblock %}
