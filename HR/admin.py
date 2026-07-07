@@ -160,17 +160,8 @@ class PersonAdmin(ImportExportModelAdmin):
                 )
             },
         ),
-    (
-            "معلومات إضافية",
-            {
-                "fields": (
-                    "Polarized_sid",
-                    "Section",
-           
-                    "is_present",
-                )
-            },
-        ),
+    
+            
     (
             "التوقف",
             {
@@ -215,11 +206,10 @@ class PersonAdmin(ImportExportModelAdmin):
             "المؤهل العلمي",
             "معدل الثانوية العامة",
             "تأريخ الدخول",
-            "المشرف",
+          
             "الحالة المادية",
             "الحالة الأجتماعية",
-            "الحالة الصحية",
-            "الدفعة",
+       
         ]
         ws.append(headers)
         for obj in queryset:
