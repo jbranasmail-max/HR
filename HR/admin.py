@@ -114,28 +114,33 @@ class PersonAdmin(ImportExportModelAdmin):
     inlines = [QualificationInline,DevelopmentCourseInline,AcademicCoursePersonalInline]
 
     fieldsets = (
-        (
-            "المعلومات الشخصية",
-            {
-                "fields": (
-                    "name",
-                    "nickname",
-                    "military_number",
-                    "jihadist_number",
-                    "address",
-                    "date_of_birth",
-                    "national_id",
-                    "marital_status",
-                    "male_children",
-                    "female_children",
-                    
-                    "health_condition",
-                    "status",
-                    
-                )
-            },
+    (
+        "المعلومات الشخصية",
+        {
+            "fields": (
+                "name",
+                "address",
+                "date_of_birth",
+                "national_id",
+                "marital_status",
+                "male_children",
+                "female_children",
+                "health_condition",
+                "status",
+            )
+        },
         ),
         (
+        "معلومات التواصل",
+        {
+            "fields": (
+                "phone",
+                "email",
+            )
+        },
+        ),
+           )
+    (
             "معلومات التواصل",
             {
                 "fields": (
@@ -144,7 +149,7 @@ class PersonAdmin(ImportExportModelAdmin):
                 )
             },
         ),
-        (
+    (
             "المؤهل والدراسة",
             {
                 "fields": (
@@ -155,7 +160,7 @@ class PersonAdmin(ImportExportModelAdmin):
                 )
             },
         ),
-        (
+    (
             "معلومات إضافية",
             {
                 "fields": (
@@ -166,7 +171,7 @@ class PersonAdmin(ImportExportModelAdmin):
                 )
             },
         ),
-        (
+    (
             "التوقف",
             {
                 "fields": (
@@ -179,7 +184,7 @@ class PersonAdmin(ImportExportModelAdmin):
             },
         ),
       
-    )
+    
     
      # داخل كلاس PersonAdmin
     def get_fieldsets(self, request, obj=None):
