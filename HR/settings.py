@@ -93,17 +93,14 @@ WSGI_APPLICATION = "HR.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hr_db',       
-        'USER': 'postgres',   
-        'PASSWORD': '774815916',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+import os
+import dj_database_url
 
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
+}
 DAISY_SETTINGS = {
     "site_header": "نظام ادراة الموارد البشرية",
     "site_title": "لوحة تحكم | نظام ادراة الموارد البشرية",
